@@ -1,0 +1,66 @@
+{
+  "verified_at": "2026-10-28T12:22:33.222574+00:00",
+  "source_revision": "a8e1d0921bfaeb359ebffa622a6627dc4953db4f",
+  "python": "3.12.14",
+  "sqlite": "3.53.1",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "environment": "fresh local Git clone and venv without pip packages; no provider credential",
+  "results": [
+    {
+      "command": [
+        "/tmp/proofloop-clean-h7na3iin/proofloop/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 2.721,
+      "stdout": "",
+      "stderr": "test_changed_spec_and_superseded_revision_cannot_execute (test_boundaries.BoundaryTests.test_changed_spec_and_superseded_revision_cannot_execute) ... ok\ntest_inconsistent_results_flagged_using_explicit_simulated_execution (test_boundaries.BoundaryTests.test_inconsistent_results_flagged_using_explicit_simulated_execution) ... ok\ntest_provider_http_failure_timeout_and_malformed_json (test_boundaries.BoundaryTests.test_provider_http_failure_timeout_and_malformed_json) ... ok\ntest_wire_errors_and_mutation_origin_guard (test_boundaries.BoundaryTests.test_wire_errors_and_mutation_origin_guard) ... ok\ntest_edit_invalidates_approval_and_preserves_old_revision (test_core.CoreTests.test_edit_invalidates_approval_and_preserves_old_revision) ... ok\ntest_real_http_and_unavailable_target_preserve_attempts (test_core.CoreTests.test_real_http_and_unavailable_target_preserve_attempts) ... ok\ntest_reference_contract_all_scenarios (test_core.CoreTests.test_reference_contract_all_scenarios) ... ok\ntest_schema_rejects_urls_commands_empty_assertions_and_bool_money (test_core.CoreTests.test_schema_rejects_urls_commands_empty_assertions_and_bool_money) ... ok\ntest_shape_precedence_and_stock_is_not_mutated (test_core.CoreTests.test_shape_precedence_and_stock_is_not_mutated) ... ok\ntest_constructed_error_is_labeled (test_provider.ProviderTests.test_constructed_error_is_labeled) ... ok\ntest_malformed_refusal_and_incomplete_are_not_imported (test_provider.ProviderTests.test_malformed_refusal_and_incomplete_are_not_imported) ... ok\ntest_missing_credentials_no_offline_fallback (test_provider.ProviderTests.test_missing_credentials_no_offline_fallback) ... ok\ntest_provider_failure_and_manual_retry_preserve_both (test_provider.ProviderTests.test_provider_failure_and_manual_retry_preserve_both) ... ok\ntest_valid_response_stays_pending_and_records_usage (test_provider.ProviderTests.test_valid_response_stays_pending_and_records_usage) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 2.596s\n\nOK\n"
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "proofloop/web/app.js"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.096,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/tmp/proofloop-clean-h7na3iin/proofloop/.venv/bin/python",
+        "scripts/verify_workflow.py",
+        "--db",
+        "data/clean-workflow.sqlite",
+        "--output",
+        "data/clean-workflow.json"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.734,
+      "stdout": "{\"offline_proposals\": 4, \"offline_schema_valid\": 4, \"approved_unchanged\": 4, \"constructed_incorrect\": 1, \"constructed_rejected\": 1, \"constructed_corrected_revisions\": 1, \"environment_errors\": 1, \"successful_recoveries\": 1, \"live_provider_calls\": 0}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/tmp/proofloop-clean-h7na3iin/proofloop/.venv/bin/python",
+        "scripts/reproduce_defect.py",
+        "--output-dir",
+        "data/clean-repair"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 2.489,
+      "stdout": "DISCLOSED SEEDED DEFECT: strict > instead of inclusive >=. Temporary clone only.\ndiff --git a/proofloop/checkout.py b/proofloop/checkout.py\nindex 9c60ee3..05601df 100644\n--- a/proofloop/checkout.py\n+++ b/proofloop/checkout.py\n@@ -38,6 +38,6 @@ def quote(body, method='POST', path='/checkout'):\n         return error(422, 'COUPON_INELIGIBLE')\n     discount = subtotal * 10 // 100 if coupon else 0\n     net = subtotal - discount\n-    shipping = 0 if net >= 5000 else 500  # R5: inclusive, after discount.\n+    shipping = 0 if net > 5000 else 500  # R5: inclusive, after discount.\n     return 200, {'subtotal_cents': subtotal, 'discount_cents': discount,\n                  'shipping_cents': shipping, 'total_cents': net + shipping}\n\n{\"output\": \"/tmp/proofloop-clean-h7na3iin/proofloop/data/clean-repair/before.json\", \"summary\": {\"passed\": 14, \"failed_assertion\": 1, \"invalid_test\": 0, \"execution_error\": 0, \"not_run\": 0}, \"outcome\": null, \"run_id\": null}\n{\n  \"requirement\": \"R5\",\n  \"expected\": {\n    \"body\": {\n      \"discount_cents\": 0,\n      \"shipping_cents\": 0,\n      \"subtotal_cents\": 5000,\n      \"total_cents\": 5000\n    },\n    \"status\": 200\n  },\n  \"observed\": {\n    \"status\": 200,\n    \"raw_body\": \"{\\\"subtotal_cents\\\": 5000, \\\"discount_cents\\\": 0, \\\"shipping_cents\\\": 500, \\\"total_cents\\\": 5500}\",\n    \"body\": {\n      \"subtotal_cents\": 5000,\n      \"discount_cents\": 0,\n      \"shipping_cents\": 500,\n      \"total_cents\": 5500\n    }\n  },\n  \"revision\": \"58d5dc24-0ecd-47e9-8a1d-650c9e981930\"\n}\nSOURCE REPAIR APPLIED: > becomes >=. Test remains unchanged.\n{\"output\": \"/tmp/proofloop-clean-h7na3iin/proofloop/data/clean-repair/after.json\", \"summary\": null, \"outcome\": \"passed\", \"run_id\": \"817612be-1faa-41a5-858a-04aa2d1bedb0\"}\n{\"output\": \"/tmp/proofloop-clean-h7na3iin/proofloop/data/clean-repair/regression.json\", \"summary\": {\"passed\": 15, \"failed_assertion\": 0, \"invalid_test\": 0, \"execution_error\": 0, \"not_run\": 0}, \"outcome\": null, \"run_id\": null}\n{\"output\": \"/tmp/proofloop-clean-h7na3iin/proofloop/data/clean-repair/history.json\", \"summary\": null, \"outcome\": null, \"run_id\": null}\nVerified same-revision repair and 15/15 regression scenarios. Evidence: /tmp/proofloop-clean-h7na3iin/proofloop/data/clean-repair\n",
+      "stderr": ""
+    }
+  ],
+  "tracked_working_tree_after": "",
+  "browser": "blocked: missing local Chromium; download denied by network policy; cloud browser cannot reach loopback",
+  "live_provider": "not performed",
+  "recording": "not performed"
+}

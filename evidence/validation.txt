@@ -1,0 +1,24 @@
+Clean checkout validation at source a8e1d0921bfaeb359ebffa622a6627dc4953db4f
+test_changed_spec_and_superseded_revision_cannot_execute (test_boundaries.BoundaryTests.test_changed_spec_and_superseded_revision_cannot_execute) ... ok
+test_inconsistent_results_flagged_using_explicit_simulated_execution (test_boundaries.BoundaryTests.test_inconsistent_results_flagged_using_explicit_simulated_execution) ... ok
+test_provider_http_failure_timeout_and_malformed_json (test_boundaries.BoundaryTests.test_provider_http_failure_timeout_and_malformed_json) ... ok
+test_wire_errors_and_mutation_origin_guard (test_boundaries.BoundaryTests.test_wire_errors_and_mutation_origin_guard) ... ok
+test_edit_invalidates_approval_and_preserves_old_revision (test_core.CoreTests.test_edit_invalidates_approval_and_preserves_old_revision) ... ok
+test_real_http_and_unavailable_target_preserve_attempts (test_core.CoreTests.test_real_http_and_unavailable_target_preserve_attempts) ... ok
+test_reference_contract_all_scenarios (test_core.CoreTests.test_reference_contract_all_scenarios) ... ok
+test_schema_rejects_urls_commands_empty_assertions_and_bool_money (test_core.CoreTests.test_schema_rejects_urls_commands_empty_assertions_and_bool_money) ... ok
+test_shape_precedence_and_stock_is_not_mutated (test_core.CoreTests.test_shape_precedence_and_stock_is_not_mutated) ... ok
+test_constructed_error_is_labeled (test_provider.ProviderTests.test_constructed_error_is_labeled) ... ok
+test_malformed_refusal_and_incomplete_are_not_imported (test_provider.ProviderTests.test_malformed_refusal_and_incomplete_are_not_imported) ... ok
+test_missing_credentials_no_offline_fallback (test_provider.ProviderTests.test_missing_credentials_no_offline_fallback) ... ok
+test_provider_failure_and_manual_retry_preserve_both (test_provider.ProviderTests.test_provider_failure_and_manual_retry_preserve_both) ... ok
+test_valid_response_stays_pending_and_records_usage (test_provider.ProviderTests.test_valid_response_stays_pending_and_records_usage) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 2.596s
+
+OK
+
+JavaScript syntax: node --check proofloop/web/app.js; exit 0.
+HTTP workflow and defect reproduction: exit 0; see clean-rehearsal.json.
+Browser and live provider remain unverified.
