@@ -1,0 +1,461 @@
+{
+  "tests": [
+    {
+      "schema_version": 1,
+      "id": "shipping-exact",
+      "requirement_refs": [
+        "R3",
+        "R5",
+        "R6"
+      ],
+      "title": "Exactly $50 receives free shipping",
+      "category": "boundary",
+      "request": {
+        "method": "POST",
+        "path": "/checkout",
+        "body": {
+          "items": [
+            {
+              "sku": "TEE",
+              "quantity": 2
+            }
+          ]
+        }
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 200,
+        "body": {
+          "subtotal_cents": 5000,
+          "discount_cents": 0,
+          "shipping_cents": 0,
+          "total_cents": 5000
+        }
+      },
+      "rationale": "R5 includes 5000; 2 \u00d7 2500 = 5000."
+    },
+    {
+      "schema_version": 1,
+      "id": "shipping-below",
+      "requirement_refs": [
+        "R3",
+        "R5",
+        "R6"
+      ],
+      "title": "One tee pays shipping",
+      "category": "normal",
+      "request": {
+        "method": "POST",
+        "path": "/checkout",
+        "body": {
+          "items": [
+            {
+              "sku": "TEE",
+              "quantity": 1
+            }
+          ]
+        }
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 200,
+        "body": {
+          "subtotal_cents": 2500,
+          "discount_cents": 0,
+          "shipping_cents": 500,
+          "total_cents": 3000
+        }
+      },
+      "rationale": "2500 is below 5000."
+    },
+    {
+      "schema_version": 1,
+      "id": "shipping-above",
+      "requirement_refs": [
+        "R3",
+        "R5",
+        "R6"
+      ],
+      "title": "Three tees receive free shipping",
+      "category": "normal",
+      "request": {
+        "method": "POST",
+        "path": "/checkout",
+        "body": {
+          "items": [
+            {
+              "sku": "TEE",
+              "quantity": 3
+            }
+          ]
+        }
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 200,
+        "body": {
+          "subtotal_cents": 7500,
+          "discount_cents": 0,
+          "shipping_cents": 0,
+          "total_cents": 7500
+        }
+      },
+      "rationale": "7500 exceeds 5000."
+    },
+    {
+      "schema_version": 1,
+      "id": "coupon-order",
+      "requirement_refs": [
+        "R4",
+        "R5"
+      ],
+      "title": "Shipping follows discount",
+      "category": "boundary",
+      "request": {
+        "method": "POST",
+        "path": "/checkout",
+        "body": {
+          "items": [
+            {
+              "sku": "TEE",
+              "quantity": 2
+            }
+          ],
+          "coupon": "SAVE10"
+        }
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 200,
+        "body": {
+          "subtotal_cents": 5000,
+          "discount_cents": 500,
+          "shipping_cents": 500,
+          "total_cents": 5000
+        }
+      },
+      "rationale": "5000 - 500 = 4500; shipping costs 500."
+    },
+    {
+      "schema_version": 1,
+      "id": "round-down",
+      "requirement_refs": [
+        "R3",
+        "R4",
+        "R6"
+      ],
+      "title": "Round discount down once",
+      "category": "boundary",
+      "request": {
+        "method": "POST",
+        "path": "/checkout",
+        "body": {
+          "items": [
+            {
+              "sku": "PIN",
+              "quantity": 6
+            }
+          ],
+          "coupon": "SAVE10"
+        }
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 200,
+        "body": {
+          "subtotal_cents": 3006,
+          "discount_cents": 300,
+          "shipping_cents": 500,
+          "total_cents": 3206
+        }
+      },
+      "rationale": "6 \u00d7 501 = 3006; floor(3006/10) = 300."
+    },
+    {
+      "schema_version": 1,
+      "id": "coupon-exact",
+      "requirement_refs": [
+        "R4"
+      ],
+      "title": "Coupon eligibility includes 3000",
+      "category": "boundary",
+      "request": {
+        "method": "POST",
+        "path": "/checkout",
+        "body": {
+          "items": [
+            {
+              "sku": "MUG",
+              "quantity": 2
+            }
+          ],
+          "coupon": "SAVE10"
+        }
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 200,
+        "body": {
+          "subtotal_cents": 3000,
+          "discount_cents": 300,
+          "shipping_cents": 500,
+          "total_cents": 3200
+        }
+      },
+      "rationale": "2 \u00d7 1500 = 3000 meets the inclusive minimum."
+    },
+    {
+      "schema_version": 1,
+      "id": "coupon-low",
+      "requirement_refs": [
+        "R4"
+      ],
+      "title": "Ineligible coupon",
+      "category": "exception",
+      "request": {
+        "method": "POST",
+        "path": "/checkout",
+        "body": {
+          "items": [
+            {
+              "sku": "TEE",
+              "quantity": 1
+            }
+          ],
+          "coupon": "SAVE10"
+        }
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 422,
+        "body": {
+          "error": "COUPON_INELIGIBLE"
+        }
+      },
+      "rationale": "2500 < 3000."
+    },
+    {
+      "schema_version": 1,
+      "id": "stock",
+      "requirement_refs": [
+        "R2"
+      ],
+      "title": "Exceed available stock",
+      "category": "exception",
+      "request": {
+        "method": "POST",
+        "path": "/checkout",
+        "body": {
+          "items": [
+            {
+              "sku": "TEE",
+              "quantity": 5
+            }
+          ]
+        }
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 409,
+        "body": {
+          "error": "OUT_OF_STOCK"
+        }
+      },
+      "rationale": "Only 4 tees exist."
+    },
+    {
+      "schema_version": 1,
+      "id": "zero",
+      "requirement_refs": [
+        "R1"
+      ],
+      "title": "Zero quantity rejected",
+      "category": "invalid",
+      "request": {
+        "method": "POST",
+        "path": "/checkout",
+        "body": {
+          "items": [
+            {
+              "sku": "TEE",
+              "quantity": 0
+            }
+          ]
+        }
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 400,
+        "body": {
+          "error": "INVALID_REQUEST"
+        }
+      },
+      "rationale": "Quantity must be 1\u201310."
+    },
+    {
+      "schema_version": 1,
+      "id": "boolean",
+      "requirement_refs": [
+        "R1"
+      ],
+      "title": "Boolean is not a quantity",
+      "category": "invalid",
+      "request": {
+        "method": "POST",
+        "path": "/checkout",
+        "body": {
+          "items": [
+            {
+              "sku": "TEE",
+              "quantity": true
+            }
+          ]
+        }
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 400,
+        "body": {
+          "error": "INVALID_REQUEST"
+        }
+      },
+      "rationale": "JSON true is not an integer quantity."
+    },
+    {
+      "schema_version": 1,
+      "id": "unknown",
+      "requirement_refs": [
+        "R2"
+      ],
+      "title": "Unknown SKU",
+      "category": "exception",
+      "request": {
+        "method": "POST",
+        "path": "/checkout",
+        "body": {
+          "items": [
+            {
+              "sku": "NOPE",
+              "quantity": 1
+            }
+          ]
+        }
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 404,
+        "body": {
+          "error": "UNKNOWN_SKU"
+        }
+      },
+      "rationale": "NOPE is absent from catalog-v1."
+    },
+    {
+      "schema_version": 1,
+      "id": "coupon-unknown",
+      "requirement_refs": [
+        "R4"
+      ],
+      "title": "Unsupported coupon",
+      "category": "invalid",
+      "request": {
+        "method": "POST",
+        "path": "/checkout",
+        "body": {
+          "items": [
+            {
+              "sku": "TEE",
+              "quantity": 2
+            }
+          ],
+          "coupon": "OTHER"
+        }
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 422,
+        "body": {
+          "error": "INVALID_COUPON"
+        }
+      },
+      "rationale": "Only SAVE10 is supported."
+    },
+    {
+      "schema_version": 1,
+      "id": "duplicates",
+      "requirement_refs": [
+        "R1"
+      ],
+      "title": "Duplicate SKU rejected",
+      "category": "invalid",
+      "request": {
+        "method": "POST",
+        "path": "/checkout",
+        "body": {
+          "items": [
+            {
+              "sku": "TEE",
+              "quantity": 1
+            },
+            {
+              "sku": "TEE",
+              "quantity": 1
+            }
+          ]
+        }
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 400,
+        "body": {
+          "error": "INVALID_REQUEST"
+        }
+      },
+      "rationale": "R1 rejects repeated SKUs before catalog checks."
+    },
+    {
+      "schema_version": 1,
+      "id": "method",
+      "requirement_refs": [
+        "R1"
+      ],
+      "title": "GET cannot quote",
+      "category": "invalid",
+      "request": {
+        "method": "GET",
+        "path": "/checkout",
+        "body": {}
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 405,
+        "body": {
+          "error": "METHOD_NOT_ALLOWED"
+        }
+      },
+      "rationale": "Only POST /checkout is supported."
+    },
+    {
+      "schema_version": 1,
+      "id": "path",
+      "requirement_refs": [
+        "R1"
+      ],
+      "title": "Unsupported operation",
+      "category": "invalid",
+      "request": {
+        "method": "POST",
+        "path": "/unsupported",
+        "body": {}
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 404,
+        "body": {
+          "error": "NOT_FOUND"
+        }
+      },
+      "rationale": "Only /checkout is defined."
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "tests": [
+    {
+      "schema_version": 1,
+      "id": "shipping-exact",
+      "requirement_refs": [
+        "R3",
+        "R5",
+        "R6"
+      ],
+      "title": "Exactly $50 receives free shipping",
+      "category": "boundary",
+      "request": {
+        "method": "POST",
+        "path": "/checkout",
+        "body": {
+          "items": [
+            {
+              "sku": "TEE",
+              "quantity": 2
+            }
+          ]
+        }
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 200,
+        "body": {
+          "subtotal_cents": 5000,
+          "discount_cents": 0,
+          "shipping_cents": 0,
+          "total_cents": 5000
+        }
+      },
+      "rationale": "R5 includes 5000; 2 \u00d7 2500 = 5000."
+    },
+    {
+      "schema_version": 1,
+      "id": "coupon-order",
+      "requirement_refs": [
+        "R4",
+        "R5"
+      ],
+      "title": "Shipping follows discount",
+      "category": "boundary",
+      "request": {
+        "method": "POST",
+        "path": "/checkout",
+        "body": {
+          "items": [
+            {
+              "sku": "TEE",
+              "quantity": 2
+            }
+          ],
+          "coupon": "SAVE10"
+        }
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 200,
+        "body": {
+          "subtotal_cents": 5000,
+          "discount_cents": 500,
+          "shipping_cents": 500,
+          "total_cents": 5000
+        }
+      },
+      "rationale": "5000 - 500 = 4500; shipping costs 500."
+    },
+    {
+      "schema_version": 1,
+      "id": "round-down",
+      "requirement_refs": [
+        "R3",
+        "R4",
+        "R6"
+      ],
+      "title": "Round discount down once",
+      "category": "boundary",
+      "request": {
+        "method": "POST",
+        "path": "/checkout",
+        "body": {
+          "items": [
+            {
+              "sku": "PIN",
+              "quantity": 6
+            }
+          ],
+          "coupon": "SAVE10"
+        }
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 200,
+        "body": {
+          "subtotal_cents": 3006,
+          "discount_cents": 300,
+          "shipping_cents": 500,
+          "total_cents": 3206
+        }
+      },
+      "rationale": "6 \u00d7 501 = 3006; floor(3006/10) = 300."
+    },
+    {
+      "schema_version": 1,
+      "id": "stock",
+      "requirement_refs": [
+        "R2"
+      ],
+      "title": "Exceed available stock",
+      "category": "exception",
+      "request": {
+        "method": "POST",
+        "path": "/checkout",
+        "body": {
+          "items": [
+            {
+              "sku": "TEE",
+              "quantity": 5
+            }
+          ]
+        }
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 409,
+        "body": {
+          "error": "OUT_OF_STOCK"
+        }
+      },
+      "rationale": "Only 4 tees exist."
+    }
+  ]
+}

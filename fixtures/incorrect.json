@@ -1,0 +1,38 @@
+{
+  "tests": [
+    {
+      "schema_version": 1,
+      "id": "constructed-wrong-test",
+      "requirement_refs": [
+        "R4",
+        "R5"
+      ],
+      "title": "Deliberately wrong: shipping before discount",
+      "category": "boundary",
+      "request": {
+        "method": "POST",
+        "path": "/checkout",
+        "body": {
+          "items": [
+            {
+              "sku": "TEE",
+              "quantity": 2
+            }
+          ],
+          "coupon": "SAVE10"
+        }
+      },
+      "fixture": "catalog-v1",
+      "expected": {
+        "status": 200,
+        "body": {
+          "subtotal_cents": 5000,
+          "discount_cents": 500,
+          "shipping_cents": 0,
+          "total_cents": 4500
+        }
+      },
+      "rationale": "CONSTRUCTED INCORRECT EXAMPLE: wrongly checks shipping on the pre-discount subtotal. Correct using R4 then R5."
+    }
+  ]
+}
