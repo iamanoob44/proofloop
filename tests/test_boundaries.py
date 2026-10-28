@@ -29,6 +29,7 @@ class BoundaryTests(unittest.TestCase):
         self.assertEqual(self.request('POST','/checkout','{')[0],400)
         self.assertEqual(self.request('POST','/unsupported','{'),(404,{'error':'NOT_FOUND'}))
         self.assertEqual(self.request('PUT','/checkout','{}')[0],405)
+        self.assertEqual(self.request('POST','/unknown','{}'),(404,{'error':'NOT_FOUND'}))
         self.assertEqual(self.request('POST','/api/generate','{"mode":"offline"}',
             {'Content-Type':'application/json','X-ProofLoop':'1','Origin':'https://evil.example'})[0],403)
         self.assertEqual(self.request('GET','/api/state',None,{'Host':'evil.example'})[0],403)

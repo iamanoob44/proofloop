@@ -79,6 +79,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send(400, {'error': 'INVALID_REQUEST'})
             code, response = quote(body, method, self.path)
             return self.send(code, response)
+        if self.path not in {'/', '/app.js', '/style.css'} and not self.path.startswith('/api/'):
+            return self.send(404, {'error': 'NOT_FOUND'})
         if method == 'GET':
             assets = {'/': ('index.html', 'text/html; charset=utf-8'),
                       '/app.js': ('app.js', 'text/javascript; charset=utf-8'),
