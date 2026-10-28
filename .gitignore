@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.env.*
+!.env.example
+data/
+*.sqlite*
+*.pdf
+project_sources/
+upload/
+private-notes/
