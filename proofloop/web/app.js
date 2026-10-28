@@ -1,5 +1,6 @@
 'use strict';
 let state, selectedRevision, selectedRun, busy=false;
+const drafts=new Map();
 const $=id=>document.getElementById(id);
 const pretty=x=>JSON.stringify(x,null,2);
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
@@ -23,8 +24,8 @@ function render(){if(!state)return;$('source').textContent='Source '+state.sourc
 }
 function renderEditor(r){const box=$('editor-panel');box.replaceChildren(el('h3',r.test.title));box.append(badge(r.status),badge(r.provenance.mode),el('p',r.test.rationale,'rationale'));
  box.append(el('p','Revision '+r.number+' · '+r.id+' · fixture '+r.test.fixture,'hint'));
- const label=el('label','Structured proposal — edit inputs, expected response, or rationale');const area=el('textarea');area.id='test-json';area.spellcheck=false;area.value=pretty(r.test);label.append(area);box.append(label);
- const buttons=el('div',undefined,'actions');buttons.append(button('Save new revision',async()=>{const test=JSON.parse(area.value);const v=await api('edit',{revision_id:r.id,test,editor:reviewer()});selectedRevision=v.id;message('New revision saved. Approval reset to pending.');}),
+ const label=el('label','Structured proposal — edit inputs, expected response, or rationale');const area=el('textarea');area.id='test-json';area.spellcheck=false;area.value=drafts.get(r.id)||pretty(r.test);area.addEventListener('input',()=>drafts.set(r.id,area.value));label.append(area);box.append(label);
+ const buttons=el('div',undefined,'actions');buttons.append(button('Save new revision',async()=>{const test=JSON.parse(area.value);const v=await api('edit',{revision_id:r.id,test,editor:reviewer()});drafts.delete(r.id);selectedRevision=v.id;message('New revision saved. Approval reset to pending.');}),
  button('Approve',async()=>{unchanged(r);await api('review',{revision_id:r.id,status:'approved',reviewer:reviewer(),note:note()});message('Revision approved.');},'primary'),
  button('Reject',async()=>{unchanged(r);await api('review',{revision_id:r.id,status:'rejected',reviewer:reviewer(),note:note()});message('Revision rejected; execution blocked.');}),
  button('Execute approved revision',async()=>{unchanged(r);const run=await api('run',{revision_id:r.id});selectedRun=run.id;message('Execution: '+run.outcome.replaceAll('_',' '));},'primary'));

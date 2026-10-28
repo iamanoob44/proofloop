@@ -70,7 +70,9 @@ class Handler(BaseHTTPRequestHandler):
         host = f'127.0.0.1:{app.server_port}'
         if self.headers.get('Host') != host:
             return self.send(403, {'error': 'Use the exact 127.0.0.1 URL shown at startup'})
-        if self.path in {'/checkout', '/unsupported'}:
+        if self.path == '/unsupported':
+            return self.send(404, {'error': 'NOT_FOUND'})
+        if self.path == '/checkout':
             try:
                 body = self.read_json() if method == 'POST' else None
             except (ValueError, UnicodeError, OSError, RecursionError):
