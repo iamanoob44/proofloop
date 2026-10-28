@@ -16,8 +16,8 @@ class CoreTests(unittest.TestCase):
     def setUp(self):
         self.tests = json.loads((ROOT / 'fixtures/reference.json').read_text())['tests']
 
-    def test_reference_contract_except_disclosed_shipping_defect(self):
-        for t in self.tests[1:]:
+    def test_reference_contract_all_scenarios(self):
+        for t in self.tests:
             with self.subTest(t=t['id']):
                 status, body = quote(t['request']['body'], t['request']['method'], t['request']['path'])
                 self.assertEqual({'status': status, 'body': body}, t['expected'])

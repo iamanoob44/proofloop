@@ -38,6 +38,6 @@ def quote(body, method='POST', path='/checkout'):
         return error(422, 'COUPON_INELIGIBLE')
     discount = subtotal * 10 // 100 if coupon else 0
     net = subtotal - discount
-    shipping = 0 if net > 5000 else 500  # Disclosed seeded defect: R5 is inclusive.
+    shipping = 0 if net >= 5000 else 500  # R5: inclusive, after discount.
     return 200, {'subtotal_cents': subtotal, 'discount_cents': discount,
                  'shipping_cents': shipping, 'total_cents': net + shipping}
