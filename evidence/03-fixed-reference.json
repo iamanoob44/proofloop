@@ -1,0 +1,2144 @@
+{
+  "source": {
+    "git_revision": "33f27f4949f5ea8e40fdb689171d2282b9077322",
+    "working_tree": "?? evidence/02-fixed-same-revision.json",
+    "source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+    "files": {
+      "SPEC.md": "c49260d5c28a3c047afaadbf974f0f6ef15ee3316d455f91a214257c671365f1",
+      "fixtures/incorrect.json": "aa0b0851e047d3c72535d50ecfde24702d40f0f124c6a707b62220c0c740668f",
+      "fixtures/offline.json": "fbf97eda947c04e65f86aad2302524400b7a516a1269eb48d3a82a28e5b8ae4b",
+      "fixtures/reference.json": "08c8b3ef4165d6d7c5aa1f7b07d6675e8949521c1e967086bfacccb041f4f615",
+      "proofloop/__init__.py": "ecb786f9cab404f897aaf7c62530f7a96c795ca67d4de6f04adde7e49f52a5c4",
+      "proofloop/__main__.py": "ed2c80766783fc03b7b0b6f8f222bfc5612d5cd39b72e3910852d7f79f7883c4",
+      "proofloop/checkout.py": "031dfb1d635f8497127c6f71e008ce4e4a6a7735c1a9119c10cb42cbeeac7143",
+      "proofloop/common.py": "aef48acd50de7bf8ea10a01e6cc2c7d9c76edb27cfa2a032c3c35fee8a060c45",
+      "proofloop/runner.py": "b9679c776f0b25ae8b95fdf4ed4b5bb3c0a96330163e616f922a02e894f190f6",
+      "proofloop/schema.py": "03c024a62e00ef8974596ec365f8a7c071373b73720537cfc85c7907f45af961",
+      "proofloop/server.py": "ab166777bad67c81d5e5a602653aabe023e82ee7fa03cfb1b4b61e2953084878",
+      "proofloop/storage.py": "7d71d9e8f55f7e3ffeb4f8373ce032dfa434fc3ff8ca7744c8df3edae27bcd64",
+      "proofloop/web/app.js": "769bd5818e93240c0938ad5beee26c20c89df3eddabc9307e36a0b060302b439",
+      "proofloop/web/index.html": "da2beae2186baeb92133120e2ad9e7f8d167700ef9503380e7c1490a3a7aa787",
+      "proofloop/web/style.css": "8c8d3e766aec8d9fe40b0fcb5085bfd28b484431c83e1d5ff6a5dfdfda868648"
+    }
+  },
+  "runs": [
+    {
+      "created_at": "2026-10-28T12:06:21.979813+00:00",
+      "revision_id": "99d21463-36fb-49a0-9515-7ec28fffd8d3",
+      "revision": {
+        "created_at": "2026-10-28T12:06:21.971477+00:00",
+        "id": "99d21463-36fb-49a0-9515-7ec28fffd8d3",
+        "number": 1,
+        "parent_revision": null,
+        "provenance": {
+          "author": "assistant-authored from specification; no provider generation",
+          "mode": "independent_reference",
+          "model": null
+        },
+        "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+        "test": {
+          "category": "boundary",
+          "expected": {
+            "body": {
+              "discount_cents": 0,
+              "shipping_cents": 0,
+              "subtotal_cents": 5000,
+              "total_cents": 5000
+            },
+            "status": 200
+          },
+          "fixture": "catalog-v1",
+          "id": "shipping-exact",
+          "rationale": "R5 includes 5000; 2 \u00d7 2500 = 5000.",
+          "request": {
+            "body": {
+              "items": [
+                {
+                  "quantity": 2,
+                  "sku": "TEE"
+                }
+              ]
+            },
+            "method": "POST",
+            "path": "/checkout"
+          },
+          "requirement_refs": [
+            "R3",
+            "R5",
+            "R6"
+          ],
+          "schema_version": 1,
+          "title": "Exactly $50 receives free shipping"
+        },
+        "test_hash": "5138713fc5d2a76e009ec9ef0b734d1a4553b58a6947457d5279c3cbc5c88c05",
+        "test_id": "1d5c23d9-cd71-43e2-851f-53c6b56772e5"
+      },
+      "source": {
+        "git_revision": "33f27f4949f5ea8e40fdb689171d2282b9077322",
+        "working_tree": "?? evidence/02-fixed-same-revision.json",
+        "source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+        "files": {
+          "SPEC.md": "c49260d5c28a3c047afaadbf974f0f6ef15ee3316d455f91a214257c671365f1",
+          "fixtures/incorrect.json": "aa0b0851e047d3c72535d50ecfde24702d40f0f124c6a707b62220c0c740668f",
+          "fixtures/offline.json": "fbf97eda947c04e65f86aad2302524400b7a516a1269eb48d3a82a28e5b8ae4b",
+          "fixtures/reference.json": "08c8b3ef4165d6d7c5aa1f7b07d6675e8949521c1e967086bfacccb041f4f615",
+          "proofloop/__init__.py": "ecb786f9cab404f897aaf7c62530f7a96c795ca67d4de6f04adde7e49f52a5c4",
+          "proofloop/__main__.py": "ed2c80766783fc03b7b0b6f8f222bfc5612d5cd39b72e3910852d7f79f7883c4",
+          "proofloop/checkout.py": "031dfb1d635f8497127c6f71e008ce4e4a6a7735c1a9119c10cb42cbeeac7143",
+          "proofloop/common.py": "aef48acd50de7bf8ea10a01e6cc2c7d9c76edb27cfa2a032c3c35fee8a060c45",
+          "proofloop/runner.py": "b9679c776f0b25ae8b95fdf4ed4b5bb3c0a96330163e616f922a02e894f190f6",
+          "proofloop/schema.py": "03c024a62e00ef8974596ec365f8a7c071373b73720537cfc85c7907f45af961",
+          "proofloop/server.py": "ab166777bad67c81d5e5a602653aabe023e82ee7fa03cfb1b4b61e2953084878",
+          "proofloop/storage.py": "7d71d9e8f55f7e3ffeb4f8373ce032dfa434fc3ff8ca7744c8df3edae27bcd64",
+          "proofloop/web/app.js": "769bd5818e93240c0938ad5beee26c20c89df3eddabc9307e36a0b060302b439",
+          "proofloop/web/index.html": "da2beae2186baeb92133120e2ad9e7f8d167700ef9503380e7c1490a3a7aa787",
+          "proofloop/web/style.css": "8c8d3e766aec8d9fe40b0fcb5085bfd28b484431c83e1d5ff6a5dfdfda868648"
+        }
+      },
+      "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+      "fixture": {
+        "id": "catalog-v1",
+        "hash": "d2bcabe5f9af3aa67e0b66657521bbc17438a22fe8f083a4e2492c7dcc3f6b0b",
+        "data": {
+          "TEE": {
+            "price": 2500,
+            "stock": 4
+          },
+          "PIN": {
+            "price": 501,
+            "stock": 10
+          },
+          "MUG": {
+            "price": 1500,
+            "stock": 3
+          }
+        }
+      },
+      "parent_run_id": null,
+      "request": {
+        "body": {
+          "items": [
+            {
+              "quantity": 2,
+              "sku": "TEE"
+            }
+          ]
+        },
+        "method": "POST",
+        "path": "/checkout"
+      },
+      "actual": {
+        "status": 200,
+        "raw_body": "{\"subtotal_cents\": 5000, \"discount_cents\": 0, \"shipping_cents\": 0, \"total_cents\": 5000}",
+        "body": {
+          "subtotal_cents": 5000,
+          "discount_cents": 0,
+          "shipping_cents": 0,
+          "total_cents": 5000
+        }
+      },
+      "assertions": [
+        {
+          "field": "status",
+          "expected": 200,
+          "actual": 200,
+          "passed": true
+        },
+        {
+          "field": "body (exact)",
+          "expected": {
+            "discount_cents": 0,
+            "shipping_cents": 0,
+            "subtotal_cents": 5000,
+            "total_cents": 5000
+          },
+          "actual": {
+            "subtotal_cents": 5000,
+            "discount_cents": 0,
+            "shipping_cents": 0,
+            "total_cents": 5000
+          },
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "error": null,
+      "diagnosis": "unreviewed",
+      "target": "http://127.0.0.1:40139",
+      "review_status_at_start": "approved",
+      "response_source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+      "duration_ms": 1.532,
+      "inconsistent_result": false,
+      "investigation_note": null,
+      "id": "d201359e-7f64-4ac6-b6ae-7c3d7053012f"
+    },
+    {
+      "created_at": "2026-10-28T12:06:21.983607+00:00",
+      "revision_id": "7d71fe91-01f7-4197-84f5-63ace28b1ac3",
+      "revision": {
+        "created_at": "2026-10-28T12:06:21.973117+00:00",
+        "id": "7d71fe91-01f7-4197-84f5-63ace28b1ac3",
+        "number": 1,
+        "parent_revision": null,
+        "provenance": {
+          "author": "assistant-authored from specification; no provider generation",
+          "mode": "independent_reference",
+          "model": null
+        },
+        "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+        "test": {
+          "category": "normal",
+          "expected": {
+            "body": {
+              "discount_cents": 0,
+              "shipping_cents": 500,
+              "subtotal_cents": 2500,
+              "total_cents": 3000
+            },
+            "status": 200
+          },
+          "fixture": "catalog-v1",
+          "id": "shipping-below",
+          "rationale": "2500 is below 5000.",
+          "request": {
+            "body": {
+              "items": [
+                {
+                  "quantity": 1,
+                  "sku": "TEE"
+                }
+              ]
+            },
+            "method": "POST",
+            "path": "/checkout"
+          },
+          "requirement_refs": [
+            "R3",
+            "R5",
+            "R6"
+          ],
+          "schema_version": 1,
+          "title": "One tee pays shipping"
+        },
+        "test_hash": "804559f136044f559840a8b9630c14f4a90b3c51dab0dd3347978bfe9855630c",
+        "test_id": "379bd4a3-62c9-4f2c-b8f2-26f08fddb9a2"
+      },
+      "source": {
+        "git_revision": "33f27f4949f5ea8e40fdb689171d2282b9077322",
+        "working_tree": "?? evidence/02-fixed-same-revision.json",
+        "source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+        "files": {
+          "SPEC.md": "c49260d5c28a3c047afaadbf974f0f6ef15ee3316d455f91a214257c671365f1",
+          "fixtures/incorrect.json": "aa0b0851e047d3c72535d50ecfde24702d40f0f124c6a707b62220c0c740668f",
+          "fixtures/offline.json": "fbf97eda947c04e65f86aad2302524400b7a516a1269eb48d3a82a28e5b8ae4b",
+          "fixtures/reference.json": "08c8b3ef4165d6d7c5aa1f7b07d6675e8949521c1e967086bfacccb041f4f615",
+          "proofloop/__init__.py": "ecb786f9cab404f897aaf7c62530f7a96c795ca67d4de6f04adde7e49f52a5c4",
+          "proofloop/__main__.py": "ed2c80766783fc03b7b0b6f8f222bfc5612d5cd39b72e3910852d7f79f7883c4",
+          "proofloop/checkout.py": "031dfb1d635f8497127c6f71e008ce4e4a6a7735c1a9119c10cb42cbeeac7143",
+          "proofloop/common.py": "aef48acd50de7bf8ea10a01e6cc2c7d9c76edb27cfa2a032c3c35fee8a060c45",
+          "proofloop/runner.py": "b9679c776f0b25ae8b95fdf4ed4b5bb3c0a96330163e616f922a02e894f190f6",
+          "proofloop/schema.py": "03c024a62e00ef8974596ec365f8a7c071373b73720537cfc85c7907f45af961",
+          "proofloop/server.py": "ab166777bad67c81d5e5a602653aabe023e82ee7fa03cfb1b4b61e2953084878",
+          "proofloop/storage.py": "7d71d9e8f55f7e3ffeb4f8373ce032dfa434fc3ff8ca7744c8df3edae27bcd64",
+          "proofloop/web/app.js": "769bd5818e93240c0938ad5beee26c20c89df3eddabc9307e36a0b060302b439",
+          "proofloop/web/index.html": "da2beae2186baeb92133120e2ad9e7f8d167700ef9503380e7c1490a3a7aa787",
+          "proofloop/web/style.css": "8c8d3e766aec8d9fe40b0fcb5085bfd28b484431c83e1d5ff6a5dfdfda868648"
+        }
+      },
+      "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+      "fixture": {
+        "id": "catalog-v1",
+        "hash": "d2bcabe5f9af3aa67e0b66657521bbc17438a22fe8f083a4e2492c7dcc3f6b0b",
+        "data": {
+          "TEE": {
+            "price": 2500,
+            "stock": 4
+          },
+          "PIN": {
+            "price": 501,
+            "stock": 10
+          },
+          "MUG": {
+            "price": 1500,
+            "stock": 3
+          }
+        }
+      },
+      "parent_run_id": null,
+      "request": {
+        "body": {
+          "items": [
+            {
+              "quantity": 1,
+              "sku": "TEE"
+            }
+          ]
+        },
+        "method": "POST",
+        "path": "/checkout"
+      },
+      "actual": {
+        "status": 200,
+        "raw_body": "{\"subtotal_cents\": 2500, \"discount_cents\": 0, \"shipping_cents\": 500, \"total_cents\": 3000}",
+        "body": {
+          "subtotal_cents": 2500,
+          "discount_cents": 0,
+          "shipping_cents": 500,
+          "total_cents": 3000
+        }
+      },
+      "assertions": [
+        {
+          "field": "status",
+          "expected": 200,
+          "actual": 200,
+          "passed": true
+        },
+        {
+          "field": "body (exact)",
+          "expected": {
+            "discount_cents": 0,
+            "shipping_cents": 500,
+            "subtotal_cents": 2500,
+            "total_cents": 3000
+          },
+          "actual": {
+            "subtotal_cents": 2500,
+            "discount_cents": 0,
+            "shipping_cents": 500,
+            "total_cents": 3000
+          },
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "error": null,
+      "diagnosis": "unreviewed",
+      "target": "http://127.0.0.1:40139",
+      "review_status_at_start": "approved",
+      "response_source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+      "duration_ms": 0.912,
+      "inconsistent_result": false,
+      "investigation_note": null,
+      "id": "6c4e32f8-4d07-4569-8b15-7a6b618ede7c"
+    },
+    {
+      "created_at": "2026-10-28T12:06:21.986634+00:00",
+      "revision_id": "b4ac0116-3572-440a-a9a2-65f0feca4bd7",
+      "revision": {
+        "created_at": "2026-10-28T12:06:21.973588+00:00",
+        "id": "b4ac0116-3572-440a-a9a2-65f0feca4bd7",
+        "number": 1,
+        "parent_revision": null,
+        "provenance": {
+          "author": "assistant-authored from specification; no provider generation",
+          "mode": "independent_reference",
+          "model": null
+        },
+        "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+        "test": {
+          "category": "normal",
+          "expected": {
+            "body": {
+              "discount_cents": 0,
+              "shipping_cents": 0,
+              "subtotal_cents": 7500,
+              "total_cents": 7500
+            },
+            "status": 200
+          },
+          "fixture": "catalog-v1",
+          "id": "shipping-above",
+          "rationale": "7500 exceeds 5000.",
+          "request": {
+            "body": {
+              "items": [
+                {
+                  "quantity": 3,
+                  "sku": "TEE"
+                }
+              ]
+            },
+            "method": "POST",
+            "path": "/checkout"
+          },
+          "requirement_refs": [
+            "R3",
+            "R5",
+            "R6"
+          ],
+          "schema_version": 1,
+          "title": "Three tees receive free shipping"
+        },
+        "test_hash": "a2dfe3311f183f634426db3aa506ac93f83afa99badf62d0d82ac05458011338",
+        "test_id": "76b61f31-2ec0-4284-889a-f816cffb01e3"
+      },
+      "source": {
+        "git_revision": "33f27f4949f5ea8e40fdb689171d2282b9077322",
+        "working_tree": "?? evidence/02-fixed-same-revision.json",
+        "source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+        "files": {
+          "SPEC.md": "c49260d5c28a3c047afaadbf974f0f6ef15ee3316d455f91a214257c671365f1",
+          "fixtures/incorrect.json": "aa0b0851e047d3c72535d50ecfde24702d40f0f124c6a707b62220c0c740668f",
+          "fixtures/offline.json": "fbf97eda947c04e65f86aad2302524400b7a516a1269eb48d3a82a28e5b8ae4b",
+          "fixtures/reference.json": "08c8b3ef4165d6d7c5aa1f7b07d6675e8949521c1e967086bfacccb041f4f615",
+          "proofloop/__init__.py": "ecb786f9cab404f897aaf7c62530f7a96c795ca67d4de6f04adde7e49f52a5c4",
+          "proofloop/__main__.py": "ed2c80766783fc03b7b0b6f8f222bfc5612d5cd39b72e3910852d7f79f7883c4",
+          "proofloop/checkout.py": "031dfb1d635f8497127c6f71e008ce4e4a6a7735c1a9119c10cb42cbeeac7143",
+          "proofloop/common.py": "aef48acd50de7bf8ea10a01e6cc2c7d9c76edb27cfa2a032c3c35fee8a060c45",
+          "proofloop/runner.py": "b9679c776f0b25ae8b95fdf4ed4b5bb3c0a96330163e616f922a02e894f190f6",
+          "proofloop/schema.py": "03c024a62e00ef8974596ec365f8a7c071373b73720537cfc85c7907f45af961",
+          "proofloop/server.py": "ab166777bad67c81d5e5a602653aabe023e82ee7fa03cfb1b4b61e2953084878",
+          "proofloop/storage.py": "7d71d9e8f55f7e3ffeb4f8373ce032dfa434fc3ff8ca7744c8df3edae27bcd64",
+          "proofloop/web/app.js": "769bd5818e93240c0938ad5beee26c20c89df3eddabc9307e36a0b060302b439",
+          "proofloop/web/index.html": "da2beae2186baeb92133120e2ad9e7f8d167700ef9503380e7c1490a3a7aa787",
+          "proofloop/web/style.css": "8c8d3e766aec8d9fe40b0fcb5085bfd28b484431c83e1d5ff6a5dfdfda868648"
+        }
+      },
+      "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+      "fixture": {
+        "id": "catalog-v1",
+        "hash": "d2bcabe5f9af3aa67e0b66657521bbc17438a22fe8f083a4e2492c7dcc3f6b0b",
+        "data": {
+          "TEE": {
+            "price": 2500,
+            "stock": 4
+          },
+          "PIN": {
+            "price": 501,
+            "stock": 10
+          },
+          "MUG": {
+            "price": 1500,
+            "stock": 3
+          }
+        }
+      },
+      "parent_run_id": null,
+      "request": {
+        "body": {
+          "items": [
+            {
+              "quantity": 3,
+              "sku": "TEE"
+            }
+          ]
+        },
+        "method": "POST",
+        "path": "/checkout"
+      },
+      "actual": {
+        "status": 200,
+        "raw_body": "{\"subtotal_cents\": 7500, \"discount_cents\": 0, \"shipping_cents\": 0, \"total_cents\": 7500}",
+        "body": {
+          "subtotal_cents": 7500,
+          "discount_cents": 0,
+          "shipping_cents": 0,
+          "total_cents": 7500
+        }
+      },
+      "assertions": [
+        {
+          "field": "status",
+          "expected": 200,
+          "actual": 200,
+          "passed": true
+        },
+        {
+          "field": "body (exact)",
+          "expected": {
+            "discount_cents": 0,
+            "shipping_cents": 0,
+            "subtotal_cents": 7500,
+            "total_cents": 7500
+          },
+          "actual": {
+            "subtotal_cents": 7500,
+            "discount_cents": 0,
+            "shipping_cents": 0,
+            "total_cents": 7500
+          },
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "error": null,
+      "diagnosis": "unreviewed",
+      "target": "http://127.0.0.1:40139",
+      "review_status_at_start": "approved",
+      "response_source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+      "duration_ms": 0.659,
+      "inconsistent_result": false,
+      "investigation_note": null,
+      "id": "1a11ce60-f675-40c1-a119-9432e55a01d0"
+    },
+    {
+      "created_at": "2026-10-28T12:06:21.989291+00:00",
+      "revision_id": "e61e65a2-ef97-4b73-9235-5bf1a91353be",
+      "revision": {
+        "created_at": "2026-10-28T12:06:21.974081+00:00",
+        "id": "e61e65a2-ef97-4b73-9235-5bf1a91353be",
+        "number": 1,
+        "parent_revision": null,
+        "provenance": {
+          "author": "assistant-authored from specification; no provider generation",
+          "mode": "independent_reference",
+          "model": null
+        },
+        "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+        "test": {
+          "category": "boundary",
+          "expected": {
+            "body": {
+              "discount_cents": 500,
+              "shipping_cents": 500,
+              "subtotal_cents": 5000,
+              "total_cents": 5000
+            },
+            "status": 200
+          },
+          "fixture": "catalog-v1",
+          "id": "coupon-order",
+          "rationale": "5000 - 500 = 4500; shipping costs 500.",
+          "request": {
+            "body": {
+              "coupon": "SAVE10",
+              "items": [
+                {
+                  "quantity": 2,
+                  "sku": "TEE"
+                }
+              ]
+            },
+            "method": "POST",
+            "path": "/checkout"
+          },
+          "requirement_refs": [
+            "R4",
+            "R5"
+          ],
+          "schema_version": 1,
+          "title": "Shipping follows discount"
+        },
+        "test_hash": "52e7ca533d9a1e202e4fe11a3648abf72224f7562d98599cc6ca1d72c74a94fd",
+        "test_id": "92ab9afc-271d-469d-ac56-a635c732cd4d"
+      },
+      "source": {
+        "git_revision": "33f27f4949f5ea8e40fdb689171d2282b9077322",
+        "working_tree": "?? evidence/02-fixed-same-revision.json",
+        "source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+        "files": {
+          "SPEC.md": "c49260d5c28a3c047afaadbf974f0f6ef15ee3316d455f91a214257c671365f1",
+          "fixtures/incorrect.json": "aa0b0851e047d3c72535d50ecfde24702d40f0f124c6a707b62220c0c740668f",
+          "fixtures/offline.json": "fbf97eda947c04e65f86aad2302524400b7a516a1269eb48d3a82a28e5b8ae4b",
+          "fixtures/reference.json": "08c8b3ef4165d6d7c5aa1f7b07d6675e8949521c1e967086bfacccb041f4f615",
+          "proofloop/__init__.py": "ecb786f9cab404f897aaf7c62530f7a96c795ca67d4de6f04adde7e49f52a5c4",
+          "proofloop/__main__.py": "ed2c80766783fc03b7b0b6f8f222bfc5612d5cd39b72e3910852d7f79f7883c4",
+          "proofloop/checkout.py": "031dfb1d635f8497127c6f71e008ce4e4a6a7735c1a9119c10cb42cbeeac7143",
+          "proofloop/common.py": "aef48acd50de7bf8ea10a01e6cc2c7d9c76edb27cfa2a032c3c35fee8a060c45",
+          "proofloop/runner.py": "b9679c776f0b25ae8b95fdf4ed4b5bb3c0a96330163e616f922a02e894f190f6",
+          "proofloop/schema.py": "03c024a62e00ef8974596ec365f8a7c071373b73720537cfc85c7907f45af961",
+          "proofloop/server.py": "ab166777bad67c81d5e5a602653aabe023e82ee7fa03cfb1b4b61e2953084878",
+          "proofloop/storage.py": "7d71d9e8f55f7e3ffeb4f8373ce032dfa434fc3ff8ca7744c8df3edae27bcd64",
+          "proofloop/web/app.js": "769bd5818e93240c0938ad5beee26c20c89df3eddabc9307e36a0b060302b439",
+          "proofloop/web/index.html": "da2beae2186baeb92133120e2ad9e7f8d167700ef9503380e7c1490a3a7aa787",
+          "proofloop/web/style.css": "8c8d3e766aec8d9fe40b0fcb5085bfd28b484431c83e1d5ff6a5dfdfda868648"
+        }
+      },
+      "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+      "fixture": {
+        "id": "catalog-v1",
+        "hash": "d2bcabe5f9af3aa67e0b66657521bbc17438a22fe8f083a4e2492c7dcc3f6b0b",
+        "data": {
+          "TEE": {
+            "price": 2500,
+            "stock": 4
+          },
+          "PIN": {
+            "price": 501,
+            "stock": 10
+          },
+          "MUG": {
+            "price": 1500,
+            "stock": 3
+          }
+        }
+      },
+      "parent_run_id": null,
+      "request": {
+        "body": {
+          "coupon": "SAVE10",
+          "items": [
+            {
+              "quantity": 2,
+              "sku": "TEE"
+            }
+          ]
+        },
+        "method": "POST",
+        "path": "/checkout"
+      },
+      "actual": {
+        "status": 200,
+        "raw_body": "{\"subtotal_cents\": 5000, \"discount_cents\": 500, \"shipping_cents\": 500, \"total_cents\": 5000}",
+        "body": {
+          "subtotal_cents": 5000,
+          "discount_cents": 500,
+          "shipping_cents": 500,
+          "total_cents": 5000
+        }
+      },
+      "assertions": [
+        {
+          "field": "status",
+          "expected": 200,
+          "actual": 200,
+          "passed": true
+        },
+        {
+          "field": "body (exact)",
+          "expected": {
+            "discount_cents": 500,
+            "shipping_cents": 500,
+            "subtotal_cents": 5000,
+            "total_cents": 5000
+          },
+          "actual": {
+            "subtotal_cents": 5000,
+            "discount_cents": 500,
+            "shipping_cents": 500,
+            "total_cents": 5000
+          },
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "error": null,
+      "diagnosis": "unreviewed",
+      "target": "http://127.0.0.1:40139",
+      "review_status_at_start": "approved",
+      "response_source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+      "duration_ms": 0.801,
+      "inconsistent_result": false,
+      "investigation_note": null,
+      "id": "a19191a8-d1c5-4b0b-aab5-241612dde4f4"
+    },
+    {
+      "created_at": "2026-10-28T12:06:21.992055+00:00",
+      "revision_id": "1bfd2dee-5e38-41a9-a6b9-c25135d4fcfe",
+      "revision": {
+        "created_at": "2026-10-28T12:06:21.974517+00:00",
+        "id": "1bfd2dee-5e38-41a9-a6b9-c25135d4fcfe",
+        "number": 1,
+        "parent_revision": null,
+        "provenance": {
+          "author": "assistant-authored from specification; no provider generation",
+          "mode": "independent_reference",
+          "model": null
+        },
+        "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+        "test": {
+          "category": "boundary",
+          "expected": {
+            "body": {
+              "discount_cents": 300,
+              "shipping_cents": 500,
+              "subtotal_cents": 3006,
+              "total_cents": 3206
+            },
+            "status": 200
+          },
+          "fixture": "catalog-v1",
+          "id": "round-down",
+          "rationale": "6 \u00d7 501 = 3006; floor(3006/10) = 300.",
+          "request": {
+            "body": {
+              "coupon": "SAVE10",
+              "items": [
+                {
+                  "quantity": 6,
+                  "sku": "PIN"
+                }
+              ]
+            },
+            "method": "POST",
+            "path": "/checkout"
+          },
+          "requirement_refs": [
+            "R3",
+            "R4",
+            "R6"
+          ],
+          "schema_version": 1,
+          "title": "Round discount down once"
+        },
+        "test_hash": "52fc23d0d1a89508b2fa209c55d00a003645d85735f7a1bd911fdf7cc019e409",
+        "test_id": "93edee3c-8565-47a6-8679-40c807d9b584"
+      },
+      "source": {
+        "git_revision": "33f27f4949f5ea8e40fdb689171d2282b9077322",
+        "working_tree": "?? evidence/02-fixed-same-revision.json",
+        "source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+        "files": {
+          "SPEC.md": "c49260d5c28a3c047afaadbf974f0f6ef15ee3316d455f91a214257c671365f1",
+          "fixtures/incorrect.json": "aa0b0851e047d3c72535d50ecfde24702d40f0f124c6a707b62220c0c740668f",
+          "fixtures/offline.json": "fbf97eda947c04e65f86aad2302524400b7a516a1269eb48d3a82a28e5b8ae4b",
+          "fixtures/reference.json": "08c8b3ef4165d6d7c5aa1f7b07d6675e8949521c1e967086bfacccb041f4f615",
+          "proofloop/__init__.py": "ecb786f9cab404f897aaf7c62530f7a96c795ca67d4de6f04adde7e49f52a5c4",
+          "proofloop/__main__.py": "ed2c80766783fc03b7b0b6f8f222bfc5612d5cd39b72e3910852d7f79f7883c4",
+          "proofloop/checkout.py": "031dfb1d635f8497127c6f71e008ce4e4a6a7735c1a9119c10cb42cbeeac7143",
+          "proofloop/common.py": "aef48acd50de7bf8ea10a01e6cc2c7d9c76edb27cfa2a032c3c35fee8a060c45",
+          "proofloop/runner.py": "b9679c776f0b25ae8b95fdf4ed4b5bb3c0a96330163e616f922a02e894f190f6",
+          "proofloop/schema.py": "03c024a62e00ef8974596ec365f8a7c071373b73720537cfc85c7907f45af961",
+          "proofloop/server.py": "ab166777bad67c81d5e5a602653aabe023e82ee7fa03cfb1b4b61e2953084878",
+          "proofloop/storage.py": "7d71d9e8f55f7e3ffeb4f8373ce032dfa434fc3ff8ca7744c8df3edae27bcd64",
+          "proofloop/web/app.js": "769bd5818e93240c0938ad5beee26c20c89df3eddabc9307e36a0b060302b439",
+          "proofloop/web/index.html": "da2beae2186baeb92133120e2ad9e7f8d167700ef9503380e7c1490a3a7aa787",
+          "proofloop/web/style.css": "8c8d3e766aec8d9fe40b0fcb5085bfd28b484431c83e1d5ff6a5dfdfda868648"
+        }
+      },
+      "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+      "fixture": {
+        "id": "catalog-v1",
+        "hash": "d2bcabe5f9af3aa67e0b66657521bbc17438a22fe8f083a4e2492c7dcc3f6b0b",
+        "data": {
+          "TEE": {
+            "price": 2500,
+            "stock": 4
+          },
+          "PIN": {
+            "price": 501,
+            "stock": 10
+          },
+          "MUG": {
+            "price": 1500,
+            "stock": 3
+          }
+        }
+      },
+      "parent_run_id": null,
+      "request": {
+        "body": {
+          "coupon": "SAVE10",
+          "items": [
+            {
+              "quantity": 6,
+              "sku": "PIN"
+            }
+          ]
+        },
+        "method": "POST",
+        "path": "/checkout"
+      },
+      "actual": {
+        "status": 200,
+        "raw_body": "{\"subtotal_cents\": 3006, \"discount_cents\": 300, \"shipping_cents\": 500, \"total_cents\": 3206}",
+        "body": {
+          "subtotal_cents": 3006,
+          "discount_cents": 300,
+          "shipping_cents": 500,
+          "total_cents": 3206
+        }
+      },
+      "assertions": [
+        {
+          "field": "status",
+          "expected": 200,
+          "actual": 200,
+          "passed": true
+        },
+        {
+          "field": "body (exact)",
+          "expected": {
+            "discount_cents": 300,
+            "shipping_cents": 500,
+            "subtotal_cents": 3006,
+            "total_cents": 3206
+          },
+          "actual": {
+            "subtotal_cents": 3006,
+            "discount_cents": 300,
+            "shipping_cents": 500,
+            "total_cents": 3206
+          },
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "error": null,
+      "diagnosis": "unreviewed",
+      "target": "http://127.0.0.1:40139",
+      "review_status_at_start": "approved",
+      "response_source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+      "duration_ms": 0.634,
+      "inconsistent_result": false,
+      "investigation_note": null,
+      "id": "093552d9-3b02-4dff-9376-99626c831f56"
+    },
+    {
+      "created_at": "2026-10-28T12:06:21.995052+00:00",
+      "revision_id": "a2240017-f025-4f9a-9850-e88e2ceaeb4f",
+      "revision": {
+        "created_at": "2026-10-28T12:06:21.974849+00:00",
+        "id": "a2240017-f025-4f9a-9850-e88e2ceaeb4f",
+        "number": 1,
+        "parent_revision": null,
+        "provenance": {
+          "author": "assistant-authored from specification; no provider generation",
+          "mode": "independent_reference",
+          "model": null
+        },
+        "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+        "test": {
+          "category": "boundary",
+          "expected": {
+            "body": {
+              "discount_cents": 300,
+              "shipping_cents": 500,
+              "subtotal_cents": 3000,
+              "total_cents": 3200
+            },
+            "status": 200
+          },
+          "fixture": "catalog-v1",
+          "id": "coupon-exact",
+          "rationale": "2 \u00d7 1500 = 3000 meets the inclusive minimum.",
+          "request": {
+            "body": {
+              "coupon": "SAVE10",
+              "items": [
+                {
+                  "quantity": 2,
+                  "sku": "MUG"
+                }
+              ]
+            },
+            "method": "POST",
+            "path": "/checkout"
+          },
+          "requirement_refs": [
+            "R4"
+          ],
+          "schema_version": 1,
+          "title": "Coupon eligibility includes 3000"
+        },
+        "test_hash": "86e9304bee93f1964162e7fa270ddd54b59f3a017b7adf9196ebcd8ce3f9b545",
+        "test_id": "7c4234fa-9ffc-4d28-b558-48fb6a399138"
+      },
+      "source": {
+        "git_revision": "33f27f4949f5ea8e40fdb689171d2282b9077322",
+        "working_tree": "?? evidence/02-fixed-same-revision.json",
+        "source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+        "files": {
+          "SPEC.md": "c49260d5c28a3c047afaadbf974f0f6ef15ee3316d455f91a214257c671365f1",
+          "fixtures/incorrect.json": "aa0b0851e047d3c72535d50ecfde24702d40f0f124c6a707b62220c0c740668f",
+          "fixtures/offline.json": "fbf97eda947c04e65f86aad2302524400b7a516a1269eb48d3a82a28e5b8ae4b",
+          "fixtures/reference.json": "08c8b3ef4165d6d7c5aa1f7b07d6675e8949521c1e967086bfacccb041f4f615",
+          "proofloop/__init__.py": "ecb786f9cab404f897aaf7c62530f7a96c795ca67d4de6f04adde7e49f52a5c4",
+          "proofloop/__main__.py": "ed2c80766783fc03b7b0b6f8f222bfc5612d5cd39b72e3910852d7f79f7883c4",
+          "proofloop/checkout.py": "031dfb1d635f8497127c6f71e008ce4e4a6a7735c1a9119c10cb42cbeeac7143",
+          "proofloop/common.py": "aef48acd50de7bf8ea10a01e6cc2c7d9c76edb27cfa2a032c3c35fee8a060c45",
+          "proofloop/runner.py": "b9679c776f0b25ae8b95fdf4ed4b5bb3c0a96330163e616f922a02e894f190f6",
+          "proofloop/schema.py": "03c024a62e00ef8974596ec365f8a7c071373b73720537cfc85c7907f45af961",
+          "proofloop/server.py": "ab166777bad67c81d5e5a602653aabe023e82ee7fa03cfb1b4b61e2953084878",
+          "proofloop/storage.py": "7d71d9e8f55f7e3ffeb4f8373ce032dfa434fc3ff8ca7744c8df3edae27bcd64",
+          "proofloop/web/app.js": "769bd5818e93240c0938ad5beee26c20c89df3eddabc9307e36a0b060302b439",
+          "proofloop/web/index.html": "da2beae2186baeb92133120e2ad9e7f8d167700ef9503380e7c1490a3a7aa787",
+          "proofloop/web/style.css": "8c8d3e766aec8d9fe40b0fcb5085bfd28b484431c83e1d5ff6a5dfdfda868648"
+        }
+      },
+      "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+      "fixture": {
+        "id": "catalog-v1",
+        "hash": "d2bcabe5f9af3aa67e0b66657521bbc17438a22fe8f083a4e2492c7dcc3f6b0b",
+        "data": {
+          "TEE": {
+            "price": 2500,
+            "stock": 4
+          },
+          "PIN": {
+            "price": 501,
+            "stock": 10
+          },
+          "MUG": {
+            "price": 1500,
+            "stock": 3
+          }
+        }
+      },
+      "parent_run_id": null,
+      "request": {
+        "body": {
+          "coupon": "SAVE10",
+          "items": [
+            {
+              "quantity": 2,
+              "sku": "MUG"
+            }
+          ]
+        },
+        "method": "POST",
+        "path": "/checkout"
+      },
+      "actual": {
+        "status": 200,
+        "raw_body": "{\"subtotal_cents\": 3000, \"discount_cents\": 300, \"shipping_cents\": 500, \"total_cents\": 3200}",
+        "body": {
+          "subtotal_cents": 3000,
+          "discount_cents": 300,
+          "shipping_cents": 500,
+          "total_cents": 3200
+        }
+      },
+      "assertions": [
+        {
+          "field": "status",
+          "expected": 200,
+          "actual": 200,
+          "passed": true
+        },
+        {
+          "field": "body (exact)",
+          "expected": {
+            "discount_cents": 300,
+            "shipping_cents": 500,
+            "subtotal_cents": 3000,
+            "total_cents": 3200
+          },
+          "actual": {
+            "subtotal_cents": 3000,
+            "discount_cents": 300,
+            "shipping_cents": 500,
+            "total_cents": 3200
+          },
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "error": null,
+      "diagnosis": "unreviewed",
+      "target": "http://127.0.0.1:40139",
+      "review_status_at_start": "approved",
+      "response_source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+      "duration_ms": 0.793,
+      "inconsistent_result": false,
+      "investigation_note": null,
+      "id": "51aef0b1-46d0-401d-aae1-9237bfbd8027"
+    },
+    {
+      "created_at": "2026-10-28T12:06:21.997902+00:00",
+      "revision_id": "a92f95d0-eba7-41ad-a70d-1f2c1698a860",
+      "revision": {
+        "created_at": "2026-10-28T12:06:21.975197+00:00",
+        "id": "a92f95d0-eba7-41ad-a70d-1f2c1698a860",
+        "number": 1,
+        "parent_revision": null,
+        "provenance": {
+          "author": "assistant-authored from specification; no provider generation",
+          "mode": "independent_reference",
+          "model": null
+        },
+        "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+        "test": {
+          "category": "exception",
+          "expected": {
+            "body": {
+              "error": "COUPON_INELIGIBLE"
+            },
+            "status": 422
+          },
+          "fixture": "catalog-v1",
+          "id": "coupon-low",
+          "rationale": "2500 < 3000.",
+          "request": {
+            "body": {
+              "coupon": "SAVE10",
+              "items": [
+                {
+                  "quantity": 1,
+                  "sku": "TEE"
+                }
+              ]
+            },
+            "method": "POST",
+            "path": "/checkout"
+          },
+          "requirement_refs": [
+            "R4"
+          ],
+          "schema_version": 1,
+          "title": "Ineligible coupon"
+        },
+        "test_hash": "c70f7ab9252d29a7a2b821f168085d03443aa3a16fa7fa9f40db94002630bbd3",
+        "test_id": "f8019ae8-98da-4f6f-ba1c-e0304dcfbb21"
+      },
+      "source": {
+        "git_revision": "33f27f4949f5ea8e40fdb689171d2282b9077322",
+        "working_tree": "?? evidence/02-fixed-same-revision.json",
+        "source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+        "files": {
+          "SPEC.md": "c49260d5c28a3c047afaadbf974f0f6ef15ee3316d455f91a214257c671365f1",
+          "fixtures/incorrect.json": "aa0b0851e047d3c72535d50ecfde24702d40f0f124c6a707b62220c0c740668f",
+          "fixtures/offline.json": "fbf97eda947c04e65f86aad2302524400b7a516a1269eb48d3a82a28e5b8ae4b",
+          "fixtures/reference.json": "08c8b3ef4165d6d7c5aa1f7b07d6675e8949521c1e967086bfacccb041f4f615",
+          "proofloop/__init__.py": "ecb786f9cab404f897aaf7c62530f7a96c795ca67d4de6f04adde7e49f52a5c4",
+          "proofloop/__main__.py": "ed2c80766783fc03b7b0b6f8f222bfc5612d5cd39b72e3910852d7f79f7883c4",
+          "proofloop/checkout.py": "031dfb1d635f8497127c6f71e008ce4e4a6a7735c1a9119c10cb42cbeeac7143",
+          "proofloop/common.py": "aef48acd50de7bf8ea10a01e6cc2c7d9c76edb27cfa2a032c3c35fee8a060c45",
+          "proofloop/runner.py": "b9679c776f0b25ae8b95fdf4ed4b5bb3c0a96330163e616f922a02e894f190f6",
+          "proofloop/schema.py": "03c024a62e00ef8974596ec365f8a7c071373b73720537cfc85c7907f45af961",
+          "proofloop/server.py": "ab166777bad67c81d5e5a602653aabe023e82ee7fa03cfb1b4b61e2953084878",
+          "proofloop/storage.py": "7d71d9e8f55f7e3ffeb4f8373ce032dfa434fc3ff8ca7744c8df3edae27bcd64",
+          "proofloop/web/app.js": "769bd5818e93240c0938ad5beee26c20c89df3eddabc9307e36a0b060302b439",
+          "proofloop/web/index.html": "da2beae2186baeb92133120e2ad9e7f8d167700ef9503380e7c1490a3a7aa787",
+          "proofloop/web/style.css": "8c8d3e766aec8d9fe40b0fcb5085bfd28b484431c83e1d5ff6a5dfdfda868648"
+        }
+      },
+      "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+      "fixture": {
+        "id": "catalog-v1",
+        "hash": "d2bcabe5f9af3aa67e0b66657521bbc17438a22fe8f083a4e2492c7dcc3f6b0b",
+        "data": {
+          "TEE": {
+            "price": 2500,
+            "stock": 4
+          },
+          "PIN": {
+            "price": 501,
+            "stock": 10
+          },
+          "MUG": {
+            "price": 1500,
+            "stock": 3
+          }
+        }
+      },
+      "parent_run_id": null,
+      "request": {
+        "body": {
+          "coupon": "SAVE10",
+          "items": [
+            {
+              "quantity": 1,
+              "sku": "TEE"
+            }
+          ]
+        },
+        "method": "POST",
+        "path": "/checkout"
+      },
+      "actual": {
+        "status": 422,
+        "raw_body": "{\"error\": \"COUPON_INELIGIBLE\"}",
+        "body": {
+          "error": "COUPON_INELIGIBLE"
+        }
+      },
+      "assertions": [
+        {
+          "field": "status",
+          "expected": 422,
+          "actual": 422,
+          "passed": true
+        },
+        {
+          "field": "body (exact)",
+          "expected": {
+            "error": "COUPON_INELIGIBLE"
+          },
+          "actual": {
+            "error": "COUPON_INELIGIBLE"
+          },
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "error": null,
+      "diagnosis": "unreviewed",
+      "target": "http://127.0.0.1:40139",
+      "review_status_at_start": "approved",
+      "response_source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+      "duration_ms": 0.618,
+      "inconsistent_result": false,
+      "investigation_note": null,
+      "id": "21605d1a-c22b-455e-ae3f-a0d3db5d95c4"
+    },
+    {
+      "created_at": "2026-10-28T12:06:22.001259+00:00",
+      "revision_id": "29eeb687-aa39-4324-b555-b042db6232ec",
+      "revision": {
+        "created_at": "2026-10-28T12:06:21.975450+00:00",
+        "id": "29eeb687-aa39-4324-b555-b042db6232ec",
+        "number": 1,
+        "parent_revision": null,
+        "provenance": {
+          "author": "assistant-authored from specification; no provider generation",
+          "mode": "independent_reference",
+          "model": null
+        },
+        "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+        "test": {
+          "category": "exception",
+          "expected": {
+            "body": {
+              "error": "OUT_OF_STOCK"
+            },
+            "status": 409
+          },
+          "fixture": "catalog-v1",
+          "id": "stock",
+          "rationale": "Only 4 tees exist.",
+          "request": {
+            "body": {
+              "items": [
+                {
+                  "quantity": 5,
+                  "sku": "TEE"
+                }
+              ]
+            },
+            "method": "POST",
+            "path": "/checkout"
+          },
+          "requirement_refs": [
+            "R2"
+          ],
+          "schema_version": 1,
+          "title": "Exceed available stock"
+        },
+        "test_hash": "54b368c8ce08040996cba1da2e35549b030fb68b5e8011f1a3d9906a7dc6e215",
+        "test_id": "5ed9e63a-0695-4a10-a5b4-29d928058115"
+      },
+      "source": {
+        "git_revision": "33f27f4949f5ea8e40fdb689171d2282b9077322",
+        "working_tree": "?? evidence/02-fixed-same-revision.json",
+        "source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+        "files": {
+          "SPEC.md": "c49260d5c28a3c047afaadbf974f0f6ef15ee3316d455f91a214257c671365f1",
+          "fixtures/incorrect.json": "aa0b0851e047d3c72535d50ecfde24702d40f0f124c6a707b62220c0c740668f",
+          "fixtures/offline.json": "fbf97eda947c04e65f86aad2302524400b7a516a1269eb48d3a82a28e5b8ae4b",
+          "fixtures/reference.json": "08c8b3ef4165d6d7c5aa1f7b07d6675e8949521c1e967086bfacccb041f4f615",
+          "proofloop/__init__.py": "ecb786f9cab404f897aaf7c62530f7a96c795ca67d4de6f04adde7e49f52a5c4",
+          "proofloop/__main__.py": "ed2c80766783fc03b7b0b6f8f222bfc5612d5cd39b72e3910852d7f79f7883c4",
+          "proofloop/checkout.py": "031dfb1d635f8497127c6f71e008ce4e4a6a7735c1a9119c10cb42cbeeac7143",
+          "proofloop/common.py": "aef48acd50de7bf8ea10a01e6cc2c7d9c76edb27cfa2a032c3c35fee8a060c45",
+          "proofloop/runner.py": "b9679c776f0b25ae8b95fdf4ed4b5bb3c0a96330163e616f922a02e894f190f6",
+          "proofloop/schema.py": "03c024a62e00ef8974596ec365f8a7c071373b73720537cfc85c7907f45af961",
+          "proofloop/server.py": "ab166777bad67c81d5e5a602653aabe023e82ee7fa03cfb1b4b61e2953084878",
+          "proofloop/storage.py": "7d71d9e8f55f7e3ffeb4f8373ce032dfa434fc3ff8ca7744c8df3edae27bcd64",
+          "proofloop/web/app.js": "769bd5818e93240c0938ad5beee26c20c89df3eddabc9307e36a0b060302b439",
+          "proofloop/web/index.html": "da2beae2186baeb92133120e2ad9e7f8d167700ef9503380e7c1490a3a7aa787",
+          "proofloop/web/style.css": "8c8d3e766aec8d9fe40b0fcb5085bfd28b484431c83e1d5ff6a5dfdfda868648"
+        }
+      },
+      "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+      "fixture": {
+        "id": "catalog-v1",
+        "hash": "d2bcabe5f9af3aa67e0b66657521bbc17438a22fe8f083a4e2492c7dcc3f6b0b",
+        "data": {
+          "TEE": {
+            "price": 2500,
+            "stock": 4
+          },
+          "PIN": {
+            "price": 501,
+            "stock": 10
+          },
+          "MUG": {
+            "price": 1500,
+            "stock": 3
+          }
+        }
+      },
+      "parent_run_id": null,
+      "request": {
+        "body": {
+          "items": [
+            {
+              "quantity": 5,
+              "sku": "TEE"
+            }
+          ]
+        },
+        "method": "POST",
+        "path": "/checkout"
+      },
+      "actual": {
+        "status": 409,
+        "raw_body": "{\"error\": \"OUT_OF_STOCK\"}",
+        "body": {
+          "error": "OUT_OF_STOCK"
+        }
+      },
+      "assertions": [
+        {
+          "field": "status",
+          "expected": 409,
+          "actual": 409,
+          "passed": true
+        },
+        {
+          "field": "body (exact)",
+          "expected": {
+            "error": "OUT_OF_STOCK"
+          },
+          "actual": {
+            "error": "OUT_OF_STOCK"
+          },
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "error": null,
+      "diagnosis": "unreviewed",
+      "target": "http://127.0.0.1:40139",
+      "review_status_at_start": "approved",
+      "response_source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+      "duration_ms": 0.589,
+      "inconsistent_result": false,
+      "investigation_note": null,
+      "id": "56dd4638-1888-42f4-bb4d-738c2f20ec03"
+    },
+    {
+      "created_at": "2026-10-28T12:06:22.004345+00:00",
+      "revision_id": "af378648-0a3d-4d91-9d69-70a314caa90e",
+      "revision": {
+        "created_at": "2026-10-28T12:06:21.975692+00:00",
+        "id": "af378648-0a3d-4d91-9d69-70a314caa90e",
+        "number": 1,
+        "parent_revision": null,
+        "provenance": {
+          "author": "assistant-authored from specification; no provider generation",
+          "mode": "independent_reference",
+          "model": null
+        },
+        "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+        "test": {
+          "category": "invalid",
+          "expected": {
+            "body": {
+              "error": "INVALID_REQUEST"
+            },
+            "status": 400
+          },
+          "fixture": "catalog-v1",
+          "id": "zero",
+          "rationale": "Quantity must be 1\u201310.",
+          "request": {
+            "body": {
+              "items": [
+                {
+                  "quantity": 0,
+                  "sku": "TEE"
+                }
+              ]
+            },
+            "method": "POST",
+            "path": "/checkout"
+          },
+          "requirement_refs": [
+            "R1"
+          ],
+          "schema_version": 1,
+          "title": "Zero quantity rejected"
+        },
+        "test_hash": "5874c5eb503958ef48eafe2d326a4a4d863a8ed47b46651edf65d4d297b13e67",
+        "test_id": "c1f2288a-84c7-4263-a501-e23c42d21534"
+      },
+      "source": {
+        "git_revision": "33f27f4949f5ea8e40fdb689171d2282b9077322",
+        "working_tree": "?? evidence/02-fixed-same-revision.json",
+        "source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+        "files": {
+          "SPEC.md": "c49260d5c28a3c047afaadbf974f0f6ef15ee3316d455f91a214257c671365f1",
+          "fixtures/incorrect.json": "aa0b0851e047d3c72535d50ecfde24702d40f0f124c6a707b62220c0c740668f",
+          "fixtures/offline.json": "fbf97eda947c04e65f86aad2302524400b7a516a1269eb48d3a82a28e5b8ae4b",
+          "fixtures/reference.json": "08c8b3ef4165d6d7c5aa1f7b07d6675e8949521c1e967086bfacccb041f4f615",
+          "proofloop/__init__.py": "ecb786f9cab404f897aaf7c62530f7a96c795ca67d4de6f04adde7e49f52a5c4",
+          "proofloop/__main__.py": "ed2c80766783fc03b7b0b6f8f222bfc5612d5cd39b72e3910852d7f79f7883c4",
+          "proofloop/checkout.py": "031dfb1d635f8497127c6f71e008ce4e4a6a7735c1a9119c10cb42cbeeac7143",
+          "proofloop/common.py": "aef48acd50de7bf8ea10a01e6cc2c7d9c76edb27cfa2a032c3c35fee8a060c45",
+          "proofloop/runner.py": "b9679c776f0b25ae8b95fdf4ed4b5bb3c0a96330163e616f922a02e894f190f6",
+          "proofloop/schema.py": "03c024a62e00ef8974596ec365f8a7c071373b73720537cfc85c7907f45af961",
+          "proofloop/server.py": "ab166777bad67c81d5e5a602653aabe023e82ee7fa03cfb1b4b61e2953084878",
+          "proofloop/storage.py": "7d71d9e8f55f7e3ffeb4f8373ce032dfa434fc3ff8ca7744c8df3edae27bcd64",
+          "proofloop/web/app.js": "769bd5818e93240c0938ad5beee26c20c89df3eddabc9307e36a0b060302b439",
+          "proofloop/web/index.html": "da2beae2186baeb92133120e2ad9e7f8d167700ef9503380e7c1490a3a7aa787",
+          "proofloop/web/style.css": "8c8d3e766aec8d9fe40b0fcb5085bfd28b484431c83e1d5ff6a5dfdfda868648"
+        }
+      },
+      "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+      "fixture": {
+        "id": "catalog-v1",
+        "hash": "d2bcabe5f9af3aa67e0b66657521bbc17438a22fe8f083a4e2492c7dcc3f6b0b",
+        "data": {
+          "TEE": {
+            "price": 2500,
+            "stock": 4
+          },
+          "PIN": {
+            "price": 501,
+            "stock": 10
+          },
+          "MUG": {
+            "price": 1500,
+            "stock": 3
+          }
+        }
+      },
+      "parent_run_id": null,
+      "request": {
+        "body": {
+          "items": [
+            {
+              "quantity": 0,
+              "sku": "TEE"
+            }
+          ]
+        },
+        "method": "POST",
+        "path": "/checkout"
+      },
+      "actual": {
+        "status": 400,
+        "raw_body": "{\"error\": \"INVALID_REQUEST\"}",
+        "body": {
+          "error": "INVALID_REQUEST"
+        }
+      },
+      "assertions": [
+        {
+          "field": "status",
+          "expected": 400,
+          "actual": 400,
+          "passed": true
+        },
+        {
+          "field": "body (exact)",
+          "expected": {
+            "error": "INVALID_REQUEST"
+          },
+          "actual": {
+            "error": "INVALID_REQUEST"
+          },
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "error": null,
+      "diagnosis": "unreviewed",
+      "target": "http://127.0.0.1:40139",
+      "review_status_at_start": "approved",
+      "response_source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+      "duration_ms": 0.682,
+      "inconsistent_result": false,
+      "investigation_note": null,
+      "id": "aa09c855-47f3-4621-9906-5648494ec987"
+    },
+    {
+      "created_at": "2026-10-28T12:06:22.007486+00:00",
+      "revision_id": "2c35c095-6cb6-4622-9f5b-4f0ce1588253",
+      "revision": {
+        "created_at": "2026-10-28T12:06:21.976177+00:00",
+        "id": "2c35c095-6cb6-4622-9f5b-4f0ce1588253",
+        "number": 1,
+        "parent_revision": null,
+        "provenance": {
+          "author": "assistant-authored from specification; no provider generation",
+          "mode": "independent_reference",
+          "model": null
+        },
+        "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+        "test": {
+          "category": "invalid",
+          "expected": {
+            "body": {
+              "error": "INVALID_REQUEST"
+            },
+            "status": 400
+          },
+          "fixture": "catalog-v1",
+          "id": "boolean",
+          "rationale": "JSON true is not an integer quantity.",
+          "request": {
+            "body": {
+              "items": [
+                {
+                  "quantity": true,
+                  "sku": "TEE"
+                }
+              ]
+            },
+            "method": "POST",
+            "path": "/checkout"
+          },
+          "requirement_refs": [
+            "R1"
+          ],
+          "schema_version": 1,
+          "title": "Boolean is not a quantity"
+        },
+        "test_hash": "bd13e7e287588d3be96d57304040277353937bde2373632aa5eae0a94d45af16",
+        "test_id": "060d90d5-73eb-43d4-bb0a-96d43cceaaf9"
+      },
+      "source": {
+        "git_revision": "33f27f4949f5ea8e40fdb689171d2282b9077322",
+        "working_tree": "?? evidence/02-fixed-same-revision.json",
+        "source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+        "files": {
+          "SPEC.md": "c49260d5c28a3c047afaadbf974f0f6ef15ee3316d455f91a214257c671365f1",
+          "fixtures/incorrect.json": "aa0b0851e047d3c72535d50ecfde24702d40f0f124c6a707b62220c0c740668f",
+          "fixtures/offline.json": "fbf97eda947c04e65f86aad2302524400b7a516a1269eb48d3a82a28e5b8ae4b",
+          "fixtures/reference.json": "08c8b3ef4165d6d7c5aa1f7b07d6675e8949521c1e967086bfacccb041f4f615",
+          "proofloop/__init__.py": "ecb786f9cab404f897aaf7c62530f7a96c795ca67d4de6f04adde7e49f52a5c4",
+          "proofloop/__main__.py": "ed2c80766783fc03b7b0b6f8f222bfc5612d5cd39b72e3910852d7f79f7883c4",
+          "proofloop/checkout.py": "031dfb1d635f8497127c6f71e008ce4e4a6a7735c1a9119c10cb42cbeeac7143",
+          "proofloop/common.py": "aef48acd50de7bf8ea10a01e6cc2c7d9c76edb27cfa2a032c3c35fee8a060c45",
+          "proofloop/runner.py": "b9679c776f0b25ae8b95fdf4ed4b5bb3c0a96330163e616f922a02e894f190f6",
+          "proofloop/schema.py": "03c024a62e00ef8974596ec365f8a7c071373b73720537cfc85c7907f45af961",
+          "proofloop/server.py": "ab166777bad67c81d5e5a602653aabe023e82ee7fa03cfb1b4b61e2953084878",
+          "proofloop/storage.py": "7d71d9e8f55f7e3ffeb4f8373ce032dfa434fc3ff8ca7744c8df3edae27bcd64",
+          "proofloop/web/app.js": "769bd5818e93240c0938ad5beee26c20c89df3eddabc9307e36a0b060302b439",
+          "proofloop/web/index.html": "da2beae2186baeb92133120e2ad9e7f8d167700ef9503380e7c1490a3a7aa787",
+          "proofloop/web/style.css": "8c8d3e766aec8d9fe40b0fcb5085bfd28b484431c83e1d5ff6a5dfdfda868648"
+        }
+      },
+      "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+      "fixture": {
+        "id": "catalog-v1",
+        "hash": "d2bcabe5f9af3aa67e0b66657521bbc17438a22fe8f083a4e2492c7dcc3f6b0b",
+        "data": {
+          "TEE": {
+            "price": 2500,
+            "stock": 4
+          },
+          "PIN": {
+            "price": 501,
+            "stock": 10
+          },
+          "MUG": {
+            "price": 1500,
+            "stock": 3
+          }
+        }
+      },
+      "parent_run_id": null,
+      "request": {
+        "body": {
+          "items": [
+            {
+              "quantity": true,
+              "sku": "TEE"
+            }
+          ]
+        },
+        "method": "POST",
+        "path": "/checkout"
+      },
+      "actual": {
+        "status": 400,
+        "raw_body": "{\"error\": \"INVALID_REQUEST\"}",
+        "body": {
+          "error": "INVALID_REQUEST"
+        }
+      },
+      "assertions": [
+        {
+          "field": "status",
+          "expected": 400,
+          "actual": 400,
+          "passed": true
+        },
+        {
+          "field": "body (exact)",
+          "expected": {
+            "error": "INVALID_REQUEST"
+          },
+          "actual": {
+            "error": "INVALID_REQUEST"
+          },
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "error": null,
+      "diagnosis": "unreviewed",
+      "target": "http://127.0.0.1:40139",
+      "review_status_at_start": "approved",
+      "response_source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+      "duration_ms": 0.674,
+      "inconsistent_result": false,
+      "investigation_note": null,
+      "id": "49ede117-fc69-4cb3-8498-e0f9eafb1ac7"
+    },
+    {
+      "created_at": "2026-10-28T12:06:22.010366+00:00",
+      "revision_id": "23b39b04-843a-47b0-be10-1e096bf1059a",
+      "revision": {
+        "created_at": "2026-10-28T12:06:21.976585+00:00",
+        "id": "23b39b04-843a-47b0-be10-1e096bf1059a",
+        "number": 1,
+        "parent_revision": null,
+        "provenance": {
+          "author": "assistant-authored from specification; no provider generation",
+          "mode": "independent_reference",
+          "model": null
+        },
+        "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+        "test": {
+          "category": "exception",
+          "expected": {
+            "body": {
+              "error": "UNKNOWN_SKU"
+            },
+            "status": 404
+          },
+          "fixture": "catalog-v1",
+          "id": "unknown",
+          "rationale": "NOPE is absent from catalog-v1.",
+          "request": {
+            "body": {
+              "items": [
+                {
+                  "quantity": 1,
+                  "sku": "NOPE"
+                }
+              ]
+            },
+            "method": "POST",
+            "path": "/checkout"
+          },
+          "requirement_refs": [
+            "R2"
+          ],
+          "schema_version": 1,
+          "title": "Unknown SKU"
+        },
+        "test_hash": "56ed79e872774f6fbedb9963ef881915522adbc0b354c4f8a8af80be9497788a",
+        "test_id": "c93fed40-d94e-42e5-955d-0ec5cf7c2993"
+      },
+      "source": {
+        "git_revision": "33f27f4949f5ea8e40fdb689171d2282b9077322",
+        "working_tree": "?? evidence/02-fixed-same-revision.json",
+        "source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+        "files": {
+          "SPEC.md": "c49260d5c28a3c047afaadbf974f0f6ef15ee3316d455f91a214257c671365f1",
+          "fixtures/incorrect.json": "aa0b0851e047d3c72535d50ecfde24702d40f0f124c6a707b62220c0c740668f",
+          "fixtures/offline.json": "fbf97eda947c04e65f86aad2302524400b7a516a1269eb48d3a82a28e5b8ae4b",
+          "fixtures/reference.json": "08c8b3ef4165d6d7c5aa1f7b07d6675e8949521c1e967086bfacccb041f4f615",
+          "proofloop/__init__.py": "ecb786f9cab404f897aaf7c62530f7a96c795ca67d4de6f04adde7e49f52a5c4",
+          "proofloop/__main__.py": "ed2c80766783fc03b7b0b6f8f222bfc5612d5cd39b72e3910852d7f79f7883c4",
+          "proofloop/checkout.py": "031dfb1d635f8497127c6f71e008ce4e4a6a7735c1a9119c10cb42cbeeac7143",
+          "proofloop/common.py": "aef48acd50de7bf8ea10a01e6cc2c7d9c76edb27cfa2a032c3c35fee8a060c45",
+          "proofloop/runner.py": "b9679c776f0b25ae8b95fdf4ed4b5bb3c0a96330163e616f922a02e894f190f6",
+          "proofloop/schema.py": "03c024a62e00ef8974596ec365f8a7c071373b73720537cfc85c7907f45af961",
+          "proofloop/server.py": "ab166777bad67c81d5e5a602653aabe023e82ee7fa03cfb1b4b61e2953084878",
+          "proofloop/storage.py": "7d71d9e8f55f7e3ffeb4f8373ce032dfa434fc3ff8ca7744c8df3edae27bcd64",
+          "proofloop/web/app.js": "769bd5818e93240c0938ad5beee26c20c89df3eddabc9307e36a0b060302b439",
+          "proofloop/web/index.html": "da2beae2186baeb92133120e2ad9e7f8d167700ef9503380e7c1490a3a7aa787",
+          "proofloop/web/style.css": "8c8d3e766aec8d9fe40b0fcb5085bfd28b484431c83e1d5ff6a5dfdfda868648"
+        }
+      },
+      "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+      "fixture": {
+        "id": "catalog-v1",
+        "hash": "d2bcabe5f9af3aa67e0b66657521bbc17438a22fe8f083a4e2492c7dcc3f6b0b",
+        "data": {
+          "TEE": {
+            "price": 2500,
+            "stock": 4
+          },
+          "PIN": {
+            "price": 501,
+            "stock": 10
+          },
+          "MUG": {
+            "price": 1500,
+            "stock": 3
+          }
+        }
+      },
+      "parent_run_id": null,
+      "request": {
+        "body": {
+          "items": [
+            {
+              "quantity": 1,
+              "sku": "NOPE"
+            }
+          ]
+        },
+        "method": "POST",
+        "path": "/checkout"
+      },
+      "actual": {
+        "status": 404,
+        "raw_body": "{\"error\": \"UNKNOWN_SKU\"}",
+        "body": {
+          "error": "UNKNOWN_SKU"
+        }
+      },
+      "assertions": [
+        {
+          "field": "status",
+          "expected": 404,
+          "actual": 404,
+          "passed": true
+        },
+        {
+          "field": "body (exact)",
+          "expected": {
+            "error": "UNKNOWN_SKU"
+          },
+          "actual": {
+            "error": "UNKNOWN_SKU"
+          },
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "error": null,
+      "diagnosis": "unreviewed",
+      "target": "http://127.0.0.1:40139",
+      "review_status_at_start": "approved",
+      "response_source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+      "duration_ms": 0.658,
+      "inconsistent_result": false,
+      "investigation_note": null,
+      "id": "3723af2b-1306-4d0a-b152-862470e054bb"
+    },
+    {
+      "created_at": "2026-10-28T12:06:22.013203+00:00",
+      "revision_id": "9f5bf27a-20ba-4401-9afb-426b5e07352b",
+      "revision": {
+        "created_at": "2026-10-28T12:06:21.977088+00:00",
+        "id": "9f5bf27a-20ba-4401-9afb-426b5e07352b",
+        "number": 1,
+        "parent_revision": null,
+        "provenance": {
+          "author": "assistant-authored from specification; no provider generation",
+          "mode": "independent_reference",
+          "model": null
+        },
+        "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+        "test": {
+          "category": "invalid",
+          "expected": {
+            "body": {
+              "error": "INVALID_COUPON"
+            },
+            "status": 422
+          },
+          "fixture": "catalog-v1",
+          "id": "coupon-unknown",
+          "rationale": "Only SAVE10 is supported.",
+          "request": {
+            "body": {
+              "coupon": "OTHER",
+              "items": [
+                {
+                  "quantity": 2,
+                  "sku": "TEE"
+                }
+              ]
+            },
+            "method": "POST",
+            "path": "/checkout"
+          },
+          "requirement_refs": [
+            "R4"
+          ],
+          "schema_version": 1,
+          "title": "Unsupported coupon"
+        },
+        "test_hash": "da7bcf52b708b218348ca4271e97b8531b1cb2c3378e9922ca0d61c804d862b6",
+        "test_id": "be4f341c-aedf-4bdc-abd7-b22317f653b8"
+      },
+      "source": {
+        "git_revision": "33f27f4949f5ea8e40fdb689171d2282b9077322",
+        "working_tree": "?? evidence/02-fixed-same-revision.json",
+        "source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+        "files": {
+          "SPEC.md": "c49260d5c28a3c047afaadbf974f0f6ef15ee3316d455f91a214257c671365f1",
+          "fixtures/incorrect.json": "aa0b0851e047d3c72535d50ecfde24702d40f0f124c6a707b62220c0c740668f",
+          "fixtures/offline.json": "fbf97eda947c04e65f86aad2302524400b7a516a1269eb48d3a82a28e5b8ae4b",
+          "fixtures/reference.json": "08c8b3ef4165d6d7c5aa1f7b07d6675e8949521c1e967086bfacccb041f4f615",
+          "proofloop/__init__.py": "ecb786f9cab404f897aaf7c62530f7a96c795ca67d4de6f04adde7e49f52a5c4",
+          "proofloop/__main__.py": "ed2c80766783fc03b7b0b6f8f222bfc5612d5cd39b72e3910852d7f79f7883c4",
+          "proofloop/checkout.py": "031dfb1d635f8497127c6f71e008ce4e4a6a7735c1a9119c10cb42cbeeac7143",
+          "proofloop/common.py": "aef48acd50de7bf8ea10a01e6cc2c7d9c76edb27cfa2a032c3c35fee8a060c45",
+          "proofloop/runner.py": "b9679c776f0b25ae8b95fdf4ed4b5bb3c0a96330163e616f922a02e894f190f6",
+          "proofloop/schema.py": "03c024a62e00ef8974596ec365f8a7c071373b73720537cfc85c7907f45af961",
+          "proofloop/server.py": "ab166777bad67c81d5e5a602653aabe023e82ee7fa03cfb1b4b61e2953084878",
+          "proofloop/storage.py": "7d71d9e8f55f7e3ffeb4f8373ce032dfa434fc3ff8ca7744c8df3edae27bcd64",
+          "proofloop/web/app.js": "769bd5818e93240c0938ad5beee26c20c89df3eddabc9307e36a0b060302b439",
+          "proofloop/web/index.html": "da2beae2186baeb92133120e2ad9e7f8d167700ef9503380e7c1490a3a7aa787",
+          "proofloop/web/style.css": "8c8d3e766aec8d9fe40b0fcb5085bfd28b484431c83e1d5ff6a5dfdfda868648"
+        }
+      },
+      "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+      "fixture": {
+        "id": "catalog-v1",
+        "hash": "d2bcabe5f9af3aa67e0b66657521bbc17438a22fe8f083a4e2492c7dcc3f6b0b",
+        "data": {
+          "TEE": {
+            "price": 2500,
+            "stock": 4
+          },
+          "PIN": {
+            "price": 501,
+            "stock": 10
+          },
+          "MUG": {
+            "price": 1500,
+            "stock": 3
+          }
+        }
+      },
+      "parent_run_id": null,
+      "request": {
+        "body": {
+          "coupon": "OTHER",
+          "items": [
+            {
+              "quantity": 2,
+              "sku": "TEE"
+            }
+          ]
+        },
+        "method": "POST",
+        "path": "/checkout"
+      },
+      "actual": {
+        "status": 422,
+        "raw_body": "{\"error\": \"INVALID_COUPON\"}",
+        "body": {
+          "error": "INVALID_COUPON"
+        }
+      },
+      "assertions": [
+        {
+          "field": "status",
+          "expected": 422,
+          "actual": 422,
+          "passed": true
+        },
+        {
+          "field": "body (exact)",
+          "expected": {
+            "error": "INVALID_COUPON"
+          },
+          "actual": {
+            "error": "INVALID_COUPON"
+          },
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "error": null,
+      "diagnosis": "unreviewed",
+      "target": "http://127.0.0.1:40139",
+      "review_status_at_start": "approved",
+      "response_source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+      "duration_ms": 0.643,
+      "inconsistent_result": false,
+      "investigation_note": null,
+      "id": "d26463fe-db00-4e65-a8b2-7d5a8f908734"
+    },
+    {
+      "created_at": "2026-10-28T12:06:22.016053+00:00",
+      "revision_id": "ae8b9a24-bee7-4299-90bd-457203e0e76b",
+      "revision": {
+        "created_at": "2026-10-28T12:06:21.977502+00:00",
+        "id": "ae8b9a24-bee7-4299-90bd-457203e0e76b",
+        "number": 1,
+        "parent_revision": null,
+        "provenance": {
+          "author": "assistant-authored from specification; no provider generation",
+          "mode": "independent_reference",
+          "model": null
+        },
+        "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+        "test": {
+          "category": "invalid",
+          "expected": {
+            "body": {
+              "error": "INVALID_REQUEST"
+            },
+            "status": 400
+          },
+          "fixture": "catalog-v1",
+          "id": "duplicates",
+          "rationale": "R1 rejects repeated SKUs before catalog checks.",
+          "request": {
+            "body": {
+              "items": [
+                {
+                  "quantity": 1,
+                  "sku": "TEE"
+                },
+                {
+                  "quantity": 1,
+                  "sku": "TEE"
+                }
+              ]
+            },
+            "method": "POST",
+            "path": "/checkout"
+          },
+          "requirement_refs": [
+            "R1"
+          ],
+          "schema_version": 1,
+          "title": "Duplicate SKU rejected"
+        },
+        "test_hash": "e28374f8dc5107715872864bc095f8646f3aeaebd4d6271a83aef9176bb91ba8",
+        "test_id": "1f7f1a54-40ad-4f59-b96c-369fdd06c361"
+      },
+      "source": {
+        "git_revision": "33f27f4949f5ea8e40fdb689171d2282b9077322",
+        "working_tree": "?? evidence/02-fixed-same-revision.json",
+        "source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+        "files": {
+          "SPEC.md": "c49260d5c28a3c047afaadbf974f0f6ef15ee3316d455f91a214257c671365f1",
+          "fixtures/incorrect.json": "aa0b0851e047d3c72535d50ecfde24702d40f0f124c6a707b62220c0c740668f",
+          "fixtures/offline.json": "fbf97eda947c04e65f86aad2302524400b7a516a1269eb48d3a82a28e5b8ae4b",
+          "fixtures/reference.json": "08c8b3ef4165d6d7c5aa1f7b07d6675e8949521c1e967086bfacccb041f4f615",
+          "proofloop/__init__.py": "ecb786f9cab404f897aaf7c62530f7a96c795ca67d4de6f04adde7e49f52a5c4",
+          "proofloop/__main__.py": "ed2c80766783fc03b7b0b6f8f222bfc5612d5cd39b72e3910852d7f79f7883c4",
+          "proofloop/checkout.py": "031dfb1d635f8497127c6f71e008ce4e4a6a7735c1a9119c10cb42cbeeac7143",
+          "proofloop/common.py": "aef48acd50de7bf8ea10a01e6cc2c7d9c76edb27cfa2a032c3c35fee8a060c45",
+          "proofloop/runner.py": "b9679c776f0b25ae8b95fdf4ed4b5bb3c0a96330163e616f922a02e894f190f6",
+          "proofloop/schema.py": "03c024a62e00ef8974596ec365f8a7c071373b73720537cfc85c7907f45af961",
+          "proofloop/server.py": "ab166777bad67c81d5e5a602653aabe023e82ee7fa03cfb1b4b61e2953084878",
+          "proofloop/storage.py": "7d71d9e8f55f7e3ffeb4f8373ce032dfa434fc3ff8ca7744c8df3edae27bcd64",
+          "proofloop/web/app.js": "769bd5818e93240c0938ad5beee26c20c89df3eddabc9307e36a0b060302b439",
+          "proofloop/web/index.html": "da2beae2186baeb92133120e2ad9e7f8d167700ef9503380e7c1490a3a7aa787",
+          "proofloop/web/style.css": "8c8d3e766aec8d9fe40b0fcb5085bfd28b484431c83e1d5ff6a5dfdfda868648"
+        }
+      },
+      "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+      "fixture": {
+        "id": "catalog-v1",
+        "hash": "d2bcabe5f9af3aa67e0b66657521bbc17438a22fe8f083a4e2492c7dcc3f6b0b",
+        "data": {
+          "TEE": {
+            "price": 2500,
+            "stock": 4
+          },
+          "PIN": {
+            "price": 501,
+            "stock": 10
+          },
+          "MUG": {
+            "price": 1500,
+            "stock": 3
+          }
+        }
+      },
+      "parent_run_id": null,
+      "request": {
+        "body": {
+          "items": [
+            {
+              "quantity": 1,
+              "sku": "TEE"
+            },
+            {
+              "quantity": 1,
+              "sku": "TEE"
+            }
+          ]
+        },
+        "method": "POST",
+        "path": "/checkout"
+      },
+      "actual": {
+        "status": 400,
+        "raw_body": "{\"error\": \"INVALID_REQUEST\"}",
+        "body": {
+          "error": "INVALID_REQUEST"
+        }
+      },
+      "assertions": [
+        {
+          "field": "status",
+          "expected": 400,
+          "actual": 400,
+          "passed": true
+        },
+        {
+          "field": "body (exact)",
+          "expected": {
+            "error": "INVALID_REQUEST"
+          },
+          "actual": {
+            "error": "INVALID_REQUEST"
+          },
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "error": null,
+      "diagnosis": "unreviewed",
+      "target": "http://127.0.0.1:40139",
+      "review_status_at_start": "approved",
+      "response_source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+      "duration_ms": 0.661,
+      "inconsistent_result": false,
+      "investigation_note": null,
+      "id": "ab947728-9ab1-4638-b413-23b4c5c7abc6"
+    },
+    {
+      "created_at": "2026-10-28T12:06:22.019181+00:00",
+      "revision_id": "115d1118-4f94-46c9-b012-0a25c57e5bf9",
+      "revision": {
+        "created_at": "2026-10-28T12:06:21.977898+00:00",
+        "id": "115d1118-4f94-46c9-b012-0a25c57e5bf9",
+        "number": 1,
+        "parent_revision": null,
+        "provenance": {
+          "author": "assistant-authored from specification; no provider generation",
+          "mode": "independent_reference",
+          "model": null
+        },
+        "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+        "test": {
+          "category": "invalid",
+          "expected": {
+            "body": {
+              "error": "METHOD_NOT_ALLOWED"
+            },
+            "status": 405
+          },
+          "fixture": "catalog-v1",
+          "id": "method",
+          "rationale": "Only POST /checkout is supported.",
+          "request": {
+            "body": {},
+            "method": "GET",
+            "path": "/checkout"
+          },
+          "requirement_refs": [
+            "R1"
+          ],
+          "schema_version": 1,
+          "title": "GET cannot quote"
+        },
+        "test_hash": "fdfdb1b3a1b64a0e5c4118c9e44dd576f7f9ca789748f8f3e41a06566fb92485",
+        "test_id": "f7f88a84-b0df-45a9-94e2-5ddec5bc5500"
+      },
+      "source": {
+        "git_revision": "33f27f4949f5ea8e40fdb689171d2282b9077322",
+        "working_tree": "?? evidence/02-fixed-same-revision.json",
+        "source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+        "files": {
+          "SPEC.md": "c49260d5c28a3c047afaadbf974f0f6ef15ee3316d455f91a214257c671365f1",
+          "fixtures/incorrect.json": "aa0b0851e047d3c72535d50ecfde24702d40f0f124c6a707b62220c0c740668f",
+          "fixtures/offline.json": "fbf97eda947c04e65f86aad2302524400b7a516a1269eb48d3a82a28e5b8ae4b",
+          "fixtures/reference.json": "08c8b3ef4165d6d7c5aa1f7b07d6675e8949521c1e967086bfacccb041f4f615",
+          "proofloop/__init__.py": "ecb786f9cab404f897aaf7c62530f7a96c795ca67d4de6f04adde7e49f52a5c4",
+          "proofloop/__main__.py": "ed2c80766783fc03b7b0b6f8f222bfc5612d5cd39b72e3910852d7f79f7883c4",
+          "proofloop/checkout.py": "031dfb1d635f8497127c6f71e008ce4e4a6a7735c1a9119c10cb42cbeeac7143",
+          "proofloop/common.py": "aef48acd50de7bf8ea10a01e6cc2c7d9c76edb27cfa2a032c3c35fee8a060c45",
+          "proofloop/runner.py": "b9679c776f0b25ae8b95fdf4ed4b5bb3c0a96330163e616f922a02e894f190f6",
+          "proofloop/schema.py": "03c024a62e00ef8974596ec365f8a7c071373b73720537cfc85c7907f45af961",
+          "proofloop/server.py": "ab166777bad67c81d5e5a602653aabe023e82ee7fa03cfb1b4b61e2953084878",
+          "proofloop/storage.py": "7d71d9e8f55f7e3ffeb4f8373ce032dfa434fc3ff8ca7744c8df3edae27bcd64",
+          "proofloop/web/app.js": "769bd5818e93240c0938ad5beee26c20c89df3eddabc9307e36a0b060302b439",
+          "proofloop/web/index.html": "da2beae2186baeb92133120e2ad9e7f8d167700ef9503380e7c1490a3a7aa787",
+          "proofloop/web/style.css": "8c8d3e766aec8d9fe40b0fcb5085bfd28b484431c83e1d5ff6a5dfdfda868648"
+        }
+      },
+      "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+      "fixture": {
+        "id": "catalog-v1",
+        "hash": "d2bcabe5f9af3aa67e0b66657521bbc17438a22fe8f083a4e2492c7dcc3f6b0b",
+        "data": {
+          "TEE": {
+            "price": 2500,
+            "stock": 4
+          },
+          "PIN": {
+            "price": 501,
+            "stock": 10
+          },
+          "MUG": {
+            "price": 1500,
+            "stock": 3
+          }
+        }
+      },
+      "parent_run_id": null,
+      "request": {
+        "body": {},
+        "method": "GET",
+        "path": "/checkout"
+      },
+      "actual": {
+        "status": 405,
+        "raw_body": "{\"error\": \"METHOD_NOT_ALLOWED\"}",
+        "body": {
+          "error": "METHOD_NOT_ALLOWED"
+        }
+      },
+      "assertions": [
+        {
+          "field": "status",
+          "expected": 405,
+          "actual": 405,
+          "passed": true
+        },
+        {
+          "field": "body (exact)",
+          "expected": {
+            "error": "METHOD_NOT_ALLOWED"
+          },
+          "actual": {
+            "error": "METHOD_NOT_ALLOWED"
+          },
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "error": null,
+      "diagnosis": "unreviewed",
+      "target": "http://127.0.0.1:40139",
+      "review_status_at_start": "approved",
+      "response_source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+      "duration_ms": 1.04,
+      "inconsistent_result": false,
+      "investigation_note": null,
+      "id": "d00d3907-d935-4516-a583-5bf1aa212fb7"
+    },
+    {
+      "created_at": "2026-10-28T12:06:22.022338+00:00",
+      "revision_id": "a429eceb-836a-4467-8968-7f0f24ea56cd",
+      "revision": {
+        "created_at": "2026-10-28T12:06:21.978370+00:00",
+        "id": "a429eceb-836a-4467-8968-7f0f24ea56cd",
+        "number": 1,
+        "parent_revision": null,
+        "provenance": {
+          "author": "assistant-authored from specification; no provider generation",
+          "mode": "independent_reference",
+          "model": null
+        },
+        "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+        "test": {
+          "category": "invalid",
+          "expected": {
+            "body": {
+              "error": "NOT_FOUND"
+            },
+            "status": 404
+          },
+          "fixture": "catalog-v1",
+          "id": "path",
+          "rationale": "Only /checkout is defined.",
+          "request": {
+            "body": {},
+            "method": "POST",
+            "path": "/unsupported"
+          },
+          "requirement_refs": [
+            "R1"
+          ],
+          "schema_version": 1,
+          "title": "Unsupported operation"
+        },
+        "test_hash": "0306561f831fb63d80411c6354f154fde7e3586f41d0255f58e5d06826cb966a",
+        "test_id": "16ad9427-f0b8-4172-8f3d-5c84f10700e5"
+      },
+      "source": {
+        "git_revision": "33f27f4949f5ea8e40fdb689171d2282b9077322",
+        "working_tree": "?? evidence/02-fixed-same-revision.json",
+        "source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+        "files": {
+          "SPEC.md": "c49260d5c28a3c047afaadbf974f0f6ef15ee3316d455f91a214257c671365f1",
+          "fixtures/incorrect.json": "aa0b0851e047d3c72535d50ecfde24702d40f0f124c6a707b62220c0c740668f",
+          "fixtures/offline.json": "fbf97eda947c04e65f86aad2302524400b7a516a1269eb48d3a82a28e5b8ae4b",
+          "fixtures/reference.json": "08c8b3ef4165d6d7c5aa1f7b07d6675e8949521c1e967086bfacccb041f4f615",
+          "proofloop/__init__.py": "ecb786f9cab404f897aaf7c62530f7a96c795ca67d4de6f04adde7e49f52a5c4",
+          "proofloop/__main__.py": "ed2c80766783fc03b7b0b6f8f222bfc5612d5cd39b72e3910852d7f79f7883c4",
+          "proofloop/checkout.py": "031dfb1d635f8497127c6f71e008ce4e4a6a7735c1a9119c10cb42cbeeac7143",
+          "proofloop/common.py": "aef48acd50de7bf8ea10a01e6cc2c7d9c76edb27cfa2a032c3c35fee8a060c45",
+          "proofloop/runner.py": "b9679c776f0b25ae8b95fdf4ed4b5bb3c0a96330163e616f922a02e894f190f6",
+          "proofloop/schema.py": "03c024a62e00ef8974596ec365f8a7c071373b73720537cfc85c7907f45af961",
+          "proofloop/server.py": "ab166777bad67c81d5e5a602653aabe023e82ee7fa03cfb1b4b61e2953084878",
+          "proofloop/storage.py": "7d71d9e8f55f7e3ffeb4f8373ce032dfa434fc3ff8ca7744c8df3edae27bcd64",
+          "proofloop/web/app.js": "769bd5818e93240c0938ad5beee26c20c89df3eddabc9307e36a0b060302b439",
+          "proofloop/web/index.html": "da2beae2186baeb92133120e2ad9e7f8d167700ef9503380e7c1490a3a7aa787",
+          "proofloop/web/style.css": "8c8d3e766aec8d9fe40b0fcb5085bfd28b484431c83e1d5ff6a5dfdfda868648"
+        }
+      },
+      "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+      "fixture": {
+        "id": "catalog-v1",
+        "hash": "d2bcabe5f9af3aa67e0b66657521bbc17438a22fe8f083a4e2492c7dcc3f6b0b",
+        "data": {
+          "TEE": {
+            "price": 2500,
+            "stock": 4
+          },
+          "PIN": {
+            "price": 501,
+            "stock": 10
+          },
+          "MUG": {
+            "price": 1500,
+            "stock": 3
+          }
+        }
+      },
+      "parent_run_id": null,
+      "request": {
+        "body": {},
+        "method": "POST",
+        "path": "/unsupported"
+      },
+      "actual": {
+        "status": 404,
+        "raw_body": "{\"error\": \"NOT_FOUND\"}",
+        "body": {
+          "error": "NOT_FOUND"
+        }
+      },
+      "assertions": [
+        {
+          "field": "status",
+          "expected": 404,
+          "actual": 404,
+          "passed": true
+        },
+        {
+          "field": "body (exact)",
+          "expected": {
+            "error": "NOT_FOUND"
+          },
+          "actual": {
+            "error": "NOT_FOUND"
+          },
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "error": null,
+      "diagnosis": "unreviewed",
+      "target": "http://127.0.0.1:40139",
+      "review_status_at_start": "approved",
+      "response_source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+      "duration_ms": 0.708,
+      "inconsistent_result": false,
+      "investigation_note": null,
+      "id": "ad324651-f0a0-4026-adf3-84b11e9804dd"
+    }
+  ],
+  "summary": {
+    "passed": 15,
+    "failed_assertion": 0,
+    "invalid_test": 0,
+    "execution_error": 0,
+    "not_run": 0
+  }
+}

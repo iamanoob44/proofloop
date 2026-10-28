@@ -1,0 +1,150 @@
+{
+  "created_at": "2026-10-28T12:06:21.396304+00:00",
+  "revision_id": "4b22c21e-8975-41dd-afd0-240c08fa20d5",
+  "revision": {
+    "created_at": "2026-10-28T12:05:55.570195+00:00",
+    "id": "4b22c21e-8975-41dd-afd0-240c08fa20d5",
+    "number": 1,
+    "parent_revision": null,
+    "provenance": {
+      "author": "assistant-authored from specification; no provider generation",
+      "mode": "independent_reference",
+      "model": null
+    },
+    "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+    "test": {
+      "category": "boundary",
+      "expected": {
+        "body": {
+          "discount_cents": 0,
+          "shipping_cents": 0,
+          "subtotal_cents": 5000,
+          "total_cents": 5000
+        },
+        "status": 200
+      },
+      "fixture": "catalog-v1",
+      "id": "shipping-exact",
+      "rationale": "R5 includes 5000; 2 \u00d7 2500 = 5000.",
+      "request": {
+        "body": {
+          "items": [
+            {
+              "quantity": 2,
+              "sku": "TEE"
+            }
+          ]
+        },
+        "method": "POST",
+        "path": "/checkout"
+      },
+      "requirement_refs": [
+        "R3",
+        "R5",
+        "R6"
+      ],
+      "schema_version": 1,
+      "title": "Exactly $50 receives free shipping"
+    },
+    "test_hash": "5138713fc5d2a76e009ec9ef0b734d1a4553b58a6947457d5279c3cbc5c88c05",
+    "test_id": "b8621387-3315-4d8b-8ce4-c1b47fafd062"
+  },
+  "source": {
+    "git_revision": "33f27f4949f5ea8e40fdb689171d2282b9077322",
+    "working_tree": "",
+    "source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+    "files": {
+      "SPEC.md": "c49260d5c28a3c047afaadbf974f0f6ef15ee3316d455f91a214257c671365f1",
+      "fixtures/incorrect.json": "aa0b0851e047d3c72535d50ecfde24702d40f0f124c6a707b62220c0c740668f",
+      "fixtures/offline.json": "fbf97eda947c04e65f86aad2302524400b7a516a1269eb48d3a82a28e5b8ae4b",
+      "fixtures/reference.json": "08c8b3ef4165d6d7c5aa1f7b07d6675e8949521c1e967086bfacccb041f4f615",
+      "proofloop/__init__.py": "ecb786f9cab404f897aaf7c62530f7a96c795ca67d4de6f04adde7e49f52a5c4",
+      "proofloop/__main__.py": "ed2c80766783fc03b7b0b6f8f222bfc5612d5cd39b72e3910852d7f79f7883c4",
+      "proofloop/checkout.py": "031dfb1d635f8497127c6f71e008ce4e4a6a7735c1a9119c10cb42cbeeac7143",
+      "proofloop/common.py": "aef48acd50de7bf8ea10a01e6cc2c7d9c76edb27cfa2a032c3c35fee8a060c45",
+      "proofloop/runner.py": "b9679c776f0b25ae8b95fdf4ed4b5bb3c0a96330163e616f922a02e894f190f6",
+      "proofloop/schema.py": "03c024a62e00ef8974596ec365f8a7c071373b73720537cfc85c7907f45af961",
+      "proofloop/server.py": "ab166777bad67c81d5e5a602653aabe023e82ee7fa03cfb1b4b61e2953084878",
+      "proofloop/storage.py": "7d71d9e8f55f7e3ffeb4f8373ce032dfa434fc3ff8ca7744c8df3edae27bcd64",
+      "proofloop/web/app.js": "769bd5818e93240c0938ad5beee26c20c89df3eddabc9307e36a0b060302b439",
+      "proofloop/web/index.html": "da2beae2186baeb92133120e2ad9e7f8d167700ef9503380e7c1490a3a7aa787",
+      "proofloop/web/style.css": "8c8d3e766aec8d9fe40b0fcb5085bfd28b484431c83e1d5ff6a5dfdfda868648"
+    }
+  },
+  "spec_hash": "ad2d71c93be0baafb86bfe2f8e71403db2a4718a693e05b872de481090685609",
+  "fixture": {
+    "id": "catalog-v1",
+    "hash": "d2bcabe5f9af3aa67e0b66657521bbc17438a22fe8f083a4e2492c7dcc3f6b0b",
+    "data": {
+      "TEE": {
+        "price": 2500,
+        "stock": 4
+      },
+      "PIN": {
+        "price": 501,
+        "stock": 10
+      },
+      "MUG": {
+        "price": 1500,
+        "stock": 3
+      }
+    }
+  },
+  "parent_run_id": "5cc737ce-e797-443f-af90-0cdf9ecb3dcf",
+  "request": {
+    "body": {
+      "items": [
+        {
+          "quantity": 2,
+          "sku": "TEE"
+        }
+      ]
+    },
+    "method": "POST",
+    "path": "/checkout"
+  },
+  "actual": {
+    "status": 200,
+    "raw_body": "{\"subtotal_cents\": 5000, \"discount_cents\": 0, \"shipping_cents\": 0, \"total_cents\": 5000}",
+    "body": {
+      "subtotal_cents": 5000,
+      "discount_cents": 0,
+      "shipping_cents": 0,
+      "total_cents": 5000
+    }
+  },
+  "assertions": [
+    {
+      "field": "status",
+      "expected": 200,
+      "actual": 200,
+      "passed": true
+    },
+    {
+      "field": "body (exact)",
+      "expected": {
+        "discount_cents": 0,
+        "shipping_cents": 0,
+        "subtotal_cents": 5000,
+        "total_cents": 5000
+      },
+      "actual": {
+        "subtotal_cents": 5000,
+        "discount_cents": 0,
+        "shipping_cents": 0,
+        "total_cents": 5000
+      },
+      "passed": true
+    }
+  ],
+  "outcome": "passed",
+  "error": null,
+  "diagnosis": "unreviewed",
+  "target": "http://127.0.0.1:45735",
+  "review_status_at_start": "approved",
+  "response_source_hash": "547aad19634285ea7f69e44016437e3904183b32f3576ff8456f49e854f81f24",
+  "duration_ms": 1.451,
+  "inconsistent_result": false,
+  "investigation_note": null,
+  "id": "d50b35c1-4763-447d-93fc-0be4660b2795"
+}
