@@ -31,6 +31,13 @@ class Handler(BaseHTTPRequestHandler):
 
     def send(self, code, value, mime='application/json'):
         data = json.dumps(value, allow_nan=False).encode() if mime == 'application/json' else value
+        if not getattr(self, 'body_read', False):
+            # Closing with unread request bytes can reset the connection on Windows.
+            # Discard bounded bodies without parsing them or changing the chosen error.
+            try:
+                self.read_body(timeout=1)
+            except (ValueError, OSError):
+                pass
         self.send_response(code)
         self.send_header('Content-Type', mime)
         self.send_header('Content-Length', str(len(data)))
@@ -41,14 +48,18 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(data)
 
-    def read_json(self):
+    def read_body(self, timeout=5):
         size = int(self.headers.get('Content-Length', '0'))
         if not 0 < size <= 65536:
             raise ValueError('Expected a JSON body up to 64 KiB')
-        self.connection.settimeout(5)
+        self.connection.settimeout(timeout)
+        self.body_read = True
+        return self.rfile.read(size)
+
+    def read_json(self):
         def invalid(value):
             raise ValueError('Non-finite JSON number')
-        return json.loads(self.rfile.read(size), parse_constant=invalid)
+        return json.loads(self.read_body(), parse_constant=invalid)
 
     def do_GET(self):
         self.handle_request('GET')
@@ -66,6 +77,7 @@ class Handler(BaseHTTPRequestHandler):
         self.handle_request('PATCH')
 
     def handle_request(self, method):
+        self.body_read = False
         app = self.server
         host = f'127.0.0.1:{app.server_port}'
         if self.headers.get('Host') != host:

@@ -20,7 +20,7 @@ def now():
 
 
 def spec():
-    return (ROOT / 'SPEC.md').read_text()
+    return (ROOT / 'SPEC.md').read_text(encoding='utf-8')
 
 
 def source_state():
