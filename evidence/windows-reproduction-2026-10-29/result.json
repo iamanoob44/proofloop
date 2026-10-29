@@ -1,0 +1,8 @@
+{
+  "status": "verified",
+  "before_run": "d69ebea2-3d99-4e94-a1f4-b272b38229f7",
+  "after_run": "37e42160-7426-42c4-8ef0-f0d67f9e5f59",
+  "same_revision": "df945a78-cd53-4040-958b-f919e09a2020",
+  "source_revision": "3ca8efbb24ebd79897c1d9c55a9f120cb69375ff",
+  "label": "Real local HTTP execution against a disclosed source mutation in an isolated clone"
+}
