@@ -20,6 +20,4 @@ Two TEEs with SAVE10: subtotal 5000, discount 500, net 4500, shipping 500, total
 Six PINs with SAVE10: subtotal 3006, discount 300, shipping 500, total 3206.
 Two MUGs with SAVE10: subtotal 3000, discount 300, shipping 500, total 3200.
 
-The initial teaching implementation deliberately misreads R5 as `net > 5000`. This is a disclosed seeded defect, not a discovered real-world defect. Repair the source operator; do not edit the example or expectation.
-
 Specification changes require a new version and renewed review of affected tests. The v1 app rejects edits to its specification file while running; restart after an intentional change and reimport proposals.

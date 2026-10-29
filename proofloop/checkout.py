@@ -1,4 +1,4 @@
-"""Fictional quote service. Seeded R5 defect disclosed in SPEC.md."""
+"""Fictional quote service. Seeded R5 defect disclosed in docs/DEMO.md."""
 CATALOG = {'TEE': {'price': 2500, 'stock': 4},
            'PIN': {'price': 501, 'stock': 10},
            'MUG': {'price': 1500, 'stock': 3}}

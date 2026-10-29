@@ -2,6 +2,16 @@
 
 This is a proposed 7–10 minute demonstration, not a prescribed duration. It is not yet rehearsed with the owner. No recording exists yet.
 
+## Seeded defect disclosure and model input
+
+The initial teaching implementation deliberately misreads R5 as `net > 5000`. This is a disclosed seeded defect, not a discovered real-world defect. Repair the source operator; do not edit the example or expectation.
+
+The current checkout implementation uses the correct inclusive comparison, `net >= 5000`. The reproduction script injects the strict comparison into an isolated clone for the demonstration, then repairs it while retaining the same test revision and expectations.
+
+The defect disclosure is kept here, outside the model-facing business specification, so generation is not given the exact implementation mistake. The live provider request contains generation instructions, SPEC.md and scenario focus; it does not include implementation source or this demonstration document. Keep scenario guidance business-focused. SPEC.md still includes worked arithmetic examples, so this is specification-guided generation, not a blind or held-out benchmark.
+
+Moving the disclosure changes the specification hash without changing the v1 business rules, prices, thresholds or examples. Restart the application, generate or load fresh proposals, and review them again before execution. Preserve existing evidence as records of the previous specification snapshot; do not relabel it as evidence from the revised model input.
+
 ## Suggested sequence (about 9 minutes)
 
 1. **0:00–0:45 — Problem and boundary.** Engineers need regression cases but must not trust plausible AI expectations without review. Show the fictional spec and limited scope.
