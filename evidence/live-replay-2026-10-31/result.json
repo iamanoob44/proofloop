@@ -1,0 +1,28 @@
+{
+  "label": "Saved live-generated revisions; actual isolated HTTP execution; no new provider call or approval",
+  "input_history_hash": "408e9890071dcef061f33de65a1e244d218ced290687192030d04ece45bcc347",
+  "selected_revisions": [
+    "1ebc9242-5540-48c3-88f1-7778be9ead69"
+  ],
+  "pairs": [
+    {
+      "revision_id": "1ebc9242-5540-48c3-88f1-7778be9ead69",
+      "test_hash": "3d7e17fab8a8ea008817f32b830137775464e405179078475ad05d589876f447",
+      "generation_id": "77caf502-5935-4173-9121-1e0952a1e0e9",
+      "before_run": "0b8d045a-4a9b-4253-9a31-318d2ce6b77e",
+      "before_outcome": "failed_assertion",
+      "after_run": "7abf0311-2a07-4e35-93cf-b9cce99e37ba",
+      "after_outcome": "passed",
+      "detected_seeded_defect": true
+    }
+  ],
+  "detected_count": 1,
+  "fixed_all_passed": true,
+  "reference_summary": {
+    "passed": 15,
+    "failed_assertion": 0,
+    "invalid_test": 0,
+    "execution_error": 0,
+    "not_run": 0
+  }
+}

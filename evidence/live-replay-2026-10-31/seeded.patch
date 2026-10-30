@@ -1,0 +1,12 @@
+diff --git a/proofloop/checkout.py b/proofloop/checkout.py
+index 78ec73f..bf5f3e3 100644
+--- a/proofloop/checkout.py
++++ b/proofloop/checkout.py
+@@ -38,6 +38,6 @@ def quote(body, method='POST', path='/checkout'):
+         return error(422, 'COUPON_INELIGIBLE')
+     discount = subtotal * 10 // 100 if coupon else 0
+     net = subtotal - discount
+-    shipping = 0 if net >= 5000 else 500  # R5: inclusive, after discount.
++    shipping = 0 if net > 5000 else 500  # R5: inclusive, after discount.
+     return 200, {'subtotal_cents': subtotal, 'discount_cents': discount,
+                  'shipping_cents': shipping, 'total_cents': net + shipping}
