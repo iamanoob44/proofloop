@@ -2,6 +2,20 @@
 
 This is a proposed 7–10 minute demonstration, not a prescribed duration. It is not yet rehearsed with the owner. No recording exists yet.
 
+## Current preparation status — 31 October 2026
+
+Live generation is now evidenced in [the saved original history](../evidence/live-replay-2026-10-31/input-history.json): three proposals, one owner-approved boundary revision and one passing original execution. The generated boundary revision subsequently detected the disclosed defect and passed unchanged after source repair. The two other generated cases still require owner review. The owner accepted R1–R6 on 31 October; the historical SPEC.md heading is retained to avoid altering the saved model-input snapshot.
+
+For step 4 below, demonstrate the actual generated case with:
+
+```bash
+python scripts/replay_generated.py --history evidence/live-replay-2026-10-31/input-history.json --revision 1ebc9242-5540-48c3-88f1-7778be9ead69 --pause
+```
+
+This performs new local HTTP executions of a saved live-generated proposal. It makes no new provider call. Its `input-history.json` contains the original generation and review, while `before.json`, `after.json`, `regression.json` and `history.json` preserve replay evidence. Use the printed `data/live-replay-.../demo.sqlite` with `python -m proofloop serve --db PATH` to inspect the result. The original `reproduce_defect.py` sequence remains useful, but is reference-case evidence and must be labelled that way.
+
+Assistant browser checks now cover prepared-source labelling, pending/rejected execution gates, missing review fields, malformed JSON and draft retention, approval/execution, edit-to-pending, linked retest comparison, separate diagnosis, JSON download, missing-credential failure and a linked manual retry, persistence, and 800/1366-pixel layout checks. See [verification details](../evidence/browser-verification-2026-10-31/verification.json) for the scope and remaining checks. This does not substitute for the owner's recorded rehearsal or a successful live recovery after failure.
+
 ## Seeded defect disclosure and model input
 
 The initial teaching implementation deliberately misreads R5 as `net > 5000`. This is a disclosed seeded defect, not a discovered real-world defect. Repair the source operator; do not edit the example or expectation.
@@ -22,7 +36,7 @@ Moving the disclosure changes the specification hash without changing the v1 bus
 6. **6:15–7:15 — Incorrect test.** Load the constructed incorrect example. R4 makes net 4500; R5 requires shipping 500. Reject, correct shipping/total and rationale, save a new revision, reapprove and execute. Explain that the example was deliberately authored, not a genuine model mistake.
 7. **7:15–9:00 — Architecture and limits.** Explain structured data versus executable tests, one app plus SQLite, human review versus deterministic assertions, exact personal contribution and what remains unverified. Optionally show the saved environment failure and recovery from the HTTP workflow evidence.
 
-## Exact browser verification and recording steps (outstanding)
+## Browser verification and recording checklist (complete remaining items on the presentation laptop)
 
 1. Start with a new database. Open http://127.0.0.1:8765 in the presentation browser. Check the page at laptop width and 800px width; no overlap or clipped controls.
 2. Tab through proposal source, generation, reviewer, reason, editor, save, approve, reject, execute and retest. Confirm visible focus and accessible names. Try empty review fields and malformed JSON; confirm clear errors and that drafts remain.
@@ -36,17 +50,17 @@ Moving the disclosure changes the specification hash without changing the v1 bus
 
 | Question | Answer to defend |
 |---|---|
-| Why AI here? | It can suggest scenario variations from prose. This prototype has not yet measured time savings or live model quality. |
+| Why AI here? | It suggests scenario variations from prose. One saved generation produced three schema-valid proposals and one reviewed case detected the disclosed seed; time savings and general model quality are unmeasured. |
 | Where do expected values come from? | The independent specification and explicit arithmetic; never the checkout function being tested. Human review adjudicates the business meaning. |
 | What if the model is wrong? | Validation rejects malformed structure; review must catch plausible but wrong expectations. Editing creates a new unapproved revision. |
 | Is every red result a product defect? | No. Compare the request, fixture, expected value and actual response with the specification. Record a separate diagnosis; environment failures have their own outcome. |
 | Why structured tests? | They expose inputs and assertions without allowing arbitrary model-generated execution. The cost is a smaller supported operation set. |
 | How do retries preserve truth? | Every attempt is append-only and links to its parent. Same-revision retests cannot replace expectations or erase earlier failures. |
 | What is the fixture preparation? | The immutable catalog-v1 is embedded in the local target and copied/hashed into evidence. Quotes do not decrement inventory; every request starts with the same catalog. |
-| What did you personally decide? | The owner supplied product direction and evidence/scope constraints. Proposed rules and assistant implementation still require owner review. Add only decisions actually made, not a memorized fictional contribution story. |
+| What did you personally decide? | The owner supplied direction and constraints, accepted R1–R6, ran Windows checks and guided reproduction, and reviewed/executed one generated boundary case. Explain only work actually done; assistant implementation and replay work remain disclosed. |
 | Why this stack? | Standard-library Python plus SQLite avoids install complexity. One process is easy to inspect; it provides less deployment realism and isolation. |
 | What changes at scale? | Isolate workers and targets, add authentication, transactional job states, cancellation, explicit fixture lifecycle, stronger schema tooling and tamper-resistant evidence retention after validating the need. |
-| What is verified? | Real HTTP checkout assertions, same-revision source repair/retest, revision review gates, history and error handling. Browser behavior, successful live generation, owner acceptance and real productivity remain unverified. |
+| What is verified? | Real HTTP assertions, reference and generated-case source repair/retest, review gates, history, selected browser checks, a saved live generation and owner rule acceptance. Full owner rehearsal/recording, review of two other live cases and productivity remain outstanding. |
 
 ## Explain-back prompts for the owner
 

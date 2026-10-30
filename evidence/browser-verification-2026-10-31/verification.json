@@ -1,0 +1,39 @@
+{
+  "date_singapore": "2026-10-31",
+  "operator": "Assistant browser verification",
+  "scope": "Actual in-app browser interactions with a separate local database; no owner sign-off or new live provider call",
+  "passed": [
+    "Prepared-source and live-provider labels",
+    "Pending and rejected execute buttons disabled",
+    "Missing reviewer and review reason errors",
+    "Malformed JSON error retains unsaved draft",
+    "Approval and actual passing HTTP execution",
+    "Linked same-revision retest comparison",
+    "Editing creates pending revision; older run snapshot unchanged",
+    "Separate inconclusive diagnosis",
+    "Browser JSON download parsed and matched persisted IDs",
+    "Missing credentials create explicit failed generation, no offline fallback",
+    "Manual retry creates a linked separate failure",
+    "History persists after server stop/restart",
+    "Layout inspected at 800x900 and 1366x900; no page horizontal overflow",
+    "Tab navigation between reviewer/reason and retest/diagnosis shows visible focus"
+  ],
+  "counts": {
+    "generation": 3,
+    "revision": 5,
+    "review": 2,
+    "run": 2,
+    "diagnosis": 1
+  },
+  "not_completed": [
+    "Full keyboard-only walkthrough of every control",
+    "Live-generation success following a failed provider attempt",
+    "Owner recording and playback",
+    "Lark sign-in and screen sharing"
+  ],
+  "files": {
+    "browser_download": "browser-export.json",
+    "desktop_screenshot": "retest-desktop.jpg"
+  },
+  "note": "Provider success is separately preserved in live-replay evidence. Failure attempts here intentionally use no credentials. Earlier browser export precedes acceptance-notice update; records were verified unchanged after restart."
+}

@@ -4,7 +4,7 @@
 
 | Module | Responsibility |
 |---|---|
-| SPEC.md | Independent fictional business contract; pending owner acceptance |
+| SPEC.md | Independent fictional business contract; owner accepted R1–R6 on 31 October 2026, recorded in ASSISTANCE.md without changing the saved specification snapshot |
 | checkout.py | Fixed catalog and pure checkout calculations; no expected-test generation |
 | generator.py | One OpenAI Responses endpoint or explicitly selected prepared examples |
 | schema.py | Version 1 proposal contract; rejects executable/extra fields and arbitrary targets |
@@ -31,13 +31,13 @@ No authentication, production HTTP hosting, process isolation or tamper-proof au
 
 ## Real design iteration
 
-Initial implementation at commit 53704f1 rendered the entire state as raw JSON. Inspecting its code and report format showed the reviewer had to locate expectations and actuals inside nested records; there was no actionable review path. Commit 863ab80 replaced it with the numbered requirements/review/evidence workflow, explicit source labels, revision controls, and side-by-side expected/actual assertions. The later edit-preservation change keeps a draft if a validation error occurs. These are assistant-led design judgments, not user research. Browser rendering and keyboard interaction remain unverified because no usable local browser binary was available and the cloud browser could not reach loopback. No screenshot is fabricated.
+Initial implementation at commit 53704f1 rendered the entire state as raw JSON. Inspecting its code and report format showed the reviewer had to locate expectations and actuals inside nested records; there was no actionable review path. Commit 863ab80 replaced it with the numbered requirements/review/evidence workflow, explicit source labels, revision controls, and side-by-side expected/actual assertions. The later edit-preservation change keeps a draft if a validation error occurs. These are assistant-led design judgments, not user research. Browser checks were unavailable at the initial handoff; the 31 October follow-up verified the core workflow, two layout widths and selected keyboard-focus transitions using the actual local app. See the browser verification evidence for remaining checks and the real screenshot.
 
 ## AI assistance and reused components
 
 See ASSISTANCE.md for consequential accepted/corrected/rejected suggestions and ownership. No existing repository, template, UI kit or business implementation was copied. Runtime components reused as-is: CPython standard library (HTTP, JSON, SQLite bindings, hashing, TLS, unittest) and browser-native HTML/CSS/JS. Git is a development/reproduction tool. No third-party source was modified. The application code and prepared examples were newly assistant-authored from the owner's brief; the reference expectations were manually specified by the assistant from SPEC.md, not produced by quote(). Independence here means independence from the implementation, not a second independent human author.
 
-Sources: https://docs.python.org/3.12/library/ and https://git-scm.com/docs and the official OpenAI JSON output guide at https://developers.openai.com/api/docs/guides/structured-outputs?api-mode=responses (checked during implementation). Provider wire behavior, account/model access and actual usage remain unverified live. No credentials are included in evidence; prompts contain only the fictional specification and user-entered focus. Do not enter confidential assessment text or secrets into scenario focus.
+Sources: https://docs.python.org/3.12/library/ and https://git-scm.com/docs and the [official OpenAI JSON output guide](https://developers.openai.com/api/docs/guides/structured-outputs) (rechecked 31 October 2026). Responses JSON mode uses `text.format.type = json_object`; structure and business meaning still require local validation and review. The saved live generation records a provider response ID, model, duration, output and usage. No credentials are included in evidence; prompts contain instructions, the fictional specification and user-entered focus. Do not enter confidential assessment text or secrets into scenario focus.
 
 ## Failure interpretation
 
@@ -51,7 +51,9 @@ A successful retry creates another record. It never removes the earlier observat
 
 ## Evaluation limits and future impact study
 
-The small sample includes 15 reference scenarios and four prepared demonstration proposals. These share a specification and some input cases, so they are not an unbiased estimate of AI capability. The one deliberately seeded defect is detected. This does not establish detection of unknown defects, complete coverage, generalization, or time saved. No live generation quality or latency claim is made. No held-out generator evaluation has occurred.
+The small sample includes 15 reference scenarios, four prepared demonstration proposals and one saved live generation containing three proposals. One owner-approved generated boundary revision detected the seeded defect and passed unchanged after source repair. These share a specification and some input cases, so they are not an unbiased estimate of AI capability. This does not establish detection of unknown defects, complete coverage, generalization, or time saved. Saved duration and token usage describe one attempt only. No held-out generator evaluation has occurred.
+
+The generated replay helper snapshots original records read-only and preserves their IDs in a new database. Selection requires an approved latest revision, matching test/specification hashes, a saved successful live generation and ancestry back to its returned proposal. The target runs in a temporary clone of committed code; every seeded/repaired phase starts a fresh Python interpreter with bytecode writing disabled to avoid same-size repair cache reuse. Reference regression runs afterward and is labelled separately. As with the main app, stored provenance is inspectable evidence, not cryptographic proof of external provider authenticity.
 
 A follow-up should freeze prompts, reserve new boundary variations, and have engineers independently adjudicate expectations before execution. Compare manual and AI-assisted drafting in counterbalanced tasks; measure total time including review/repair, incorrect approvals, scenario completeness, and defects found, with sample size and uncertainty reported. Do not optimize merely for more generated cases.
 

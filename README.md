@@ -4,11 +4,11 @@
 
 ProofLoop helps engineers maintaining a fictional creator-commerce checkout quote service explore the gap between writing requirements and trusting generated regression tests. Scope: one local target, one immutable catalog, structured JSON proposals, revision-based review, one model provider adapter, SQLite history, and inspectable reports. No payments, authentication, tenancy, production commerce integrations or browser agents.
 
-**Status:** core checkout, runner, repair and HTTP workflow verified. UI implemented but browser verification outstanding. Live provider success unverified: no credential was available. Business rules in [SPEC.md](SPEC.md) await owner acceptance. This is a working prototype, not a completed submission.
+**Status (31 October 2026, Singapore):** 21 implementation tests pass on Windows. Saved live generation contains three proposals; Jake approved and executed the shipping-boundary case. That same generated revision detects the seeded defect and passes unchanged after repair; reference regression passes 15/15. Browser workflow checks have been performed with explicitly labelled assistant reviews. The owner accepted R1–R6 on 31 October. Review of the other two live proposals, full presentation rehearsal, recording and final publication remain outstanding.
 
 ## Start locally
 
-Prerequisites: Python 3.12 (verified 3.12.14), Git for source identity and the isolated repair demo, and a modern browser. No pip or npm runtime packages; `requirements.lock` records that explicitly. Linux verified; Windows/macOS not yet rehearsed.
+Prerequisites: Python 3.12 (Windows 3.12.10 and Linux 3.12.14 verified), Git for source identity and the isolated repair demo, and a modern browser. No pip or npm runtime packages; `requirements.lock` records that explicitly. macOS has not been rehearsed.
 
 ```bash
 cd proofloop
@@ -16,6 +16,14 @@ python -m proofloop serve
 ```
 
 Open **http://127.0.0.1:8765**. Use the exact numeric loopback address; `localhost` is intentionally rejected by the Host guard. The server stays local. Press Ctrl+C to stop.
+
+On the owner's Windows laptop, open PowerShell in `proofloop-restored` and use the verified interpreter explicitly:
+
+```powershell
+& "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe" -m proofloop serve
+```
+
+Use that same interpreter in place of `python` in the commands below. Another machine can use its own Python 3.12 installation.
 
 1. Read the proposed specification, then select **Offline · prepared examples** and load proposals.
 2. Inspect a proposal's inputs, exact expectation, requirement references and rationale.
@@ -29,7 +37,7 @@ Offline fixtures are prepared assistant-authored examples, **not** captured succ
 
 Set `OPENAI_API_KEY` and `OPENAI_MODEL` in your shell or local secret manager **before starting the server**. Use a model enabled in your account that supports Responses API JSON output. `.env.example` lists the names; the app does not automatically read `.env`. Do not paste secrets into the UI or commit them. Your ChatGPT sign-in does not configure this application's provider credential.
 
-Choose **Live · OpenAI provider**, enter a scenario focus, and generate. Only the fictional specification and focus are sent to `https://api.openai.com/v1/responses`. Provider output must pass local validation and human review. An error is saved as a generation attempt; there is no silent fallback or automatic retry. A manual retry preserves and links the first attempt. Live calls may incur account charges. Successful live generation, available model selection and actual token usage still need verification on your machine.
+Choose **Live · OpenAI provider**, enter a scenario focus, and generate. Generation instructions, the fictional specification and focus are sent to `https://api.openai.com/v1/responses`; implementation source and defect disclosure are excluded. Provider output must pass local validation and human review. An error is saved as a generation attempt; there is no silent fallback or automatic retry. A manual retry preserves and links the first attempt. Live calls may incur account charges. The saved 30 October generation reports `gpt-6-luna`, three validated proposals and 1596 total tokens; availability on another account still needs checking. See the original record in [input-history.json](evidence/live-replay-2026-10-31/input-history.json). No new provider call was made during the 31 October audit.
 
 ## Verify and reproduce
 
@@ -49,6 +57,16 @@ python -m proofloop serve --db data/reproduction-REPLACE_WITH_PRINTED_ID/demo.sq
 ```
 
 Use the actual directory printed by the script. Its original failure and same-revision retest appear in the evidence table. Current checkout code is fixed. Old source versions stay visible in each run's source metadata.
+
+### Replay the actual generated test
+
+The reference command above uses prepared reference cases. This separate command replays the saved, approved live-generated revision and retains its generation, review, revision and test identities:
+
+```bash
+python scripts/replay_generated.py --history evidence/live-replay-2026-10-31/input-history.json --revision 1ebc9242-5540-48c3-88f1-7778be9ead69
+```
+
+It needs no API key or pre-existing local database. The helper copies exported history into a new database, clones committed target code, injects the disclosed defect, executes the selected revision, repairs the source, retests unchanged expectations, and runs the reference regression suite. It refuses pending/rejected/superseded revisions and specification mismatches. It reports missed detections as such. Repeat `--revision` for multiple approved tests; use `--db PATH` instead of `--history PATH` to take a read-only snapshot of an existing database. `--pause` pauses before repair. It never approves proposals or replaces them with reference cases. `input-history.json` preserves the original records; `history.json` adds the replay and regression runs. Local SQLite files remain ignored.
 
 ## Reset and recover without deleting history
 
@@ -70,6 +88,9 @@ python -m proofloop export --db data/proofloop.sqlite --output data/export.json
 | `evidence/04-workflow.json` | Actual HTTP review/edit/run workflow; constructed wrong-test correction; connection failure/recovery |
 | `evidence/validation.txt` | Implementation test results and JS syntax check |
 | `evidence/clean-rehearsal.json` | Isolated clean-checkout reproduction results |
+| [Windows reproduction](evidence/windows-reproduction-2026-10-29/result.json) | Owner's earlier reference-case reproduction and unchanged-revision retest |
+| [Live-generated replay](evidence/live-replay-2026-10-31/result.json) | Actual generated boundary revision fails against the seed and passes unchanged after repair; 15/15 reference regression |
+| [Browser verification](evidence/browser-verification-2026-10-31/verification.json) | Assistant-operated browser checks and explicitly listed remaining checks |
 | `docs/ENGINEERING.md` | Modules, two decisions, design iteration, failure semantics and limitations |
 | `docs/ASSISTANCE.md` | Actual assistance, corrections, reuse and contribution boundaries |
 | `docs/DEMO.md` | Proposed demo and technical questions |
@@ -78,6 +99,15 @@ These small samples do not establish productivity gains, general model accuracy 
 
 ## Source history and distribution
 
-Meaningful local commits preserve the specification, seeded implementation, observed failure, repair, review workflow and hardening. No commits were backdated. No remote repository has been created or pushed. Repository author identity is a neutral local development identity, not a claim about the owner's personal authorship. Confidential assessment materials are outside this repository and its history.
+Meaningful commits preserve the specification, seeded implementation, observed failure, repair, review workflow and hardening. No commits were backdated. The repository is published at [iamanoob44/proofloop](https://github.com/iamanoob44/proofloop). Early commits retain the neutral development identity and assistance disclosures; later owner commits use the configured owner identity. Confidential assessment materials are outside this repository and its history.
 
 A distributed archive includes `proofloop-history.bundle` and `RELEASE.json`. To restore the real local history, run `git clone proofloop-history.bundle proofloop-restored`; then follow the commands above. The manifest identifies the packaged source SHA. A final submitted SHA must be recorded after the owner accepts the result and publishes the dedicated repository.
+
+The original bundle and sibling `proofloop` folder are historical baseline artifacts. Continue from the current Git repository, not that older copy.
+
+## Remaining completion steps
+
+1. In the original live database, personally review the normal six-PIN case (3006 subtotal, 300 discount, 500 shipping, 3206 total) and duplicate-SKU case (400 INVALID_REQUEST). Approve or correct them with meaningful reasons, then execute. Strengthen the boundary review reason beyond the original “Testing” note by appending a new review; preserve the old event.
+2. Rehearse the browser flow and failure recovery on the presentation laptop. The saved provider-success and missing-credential failures are separate sessions; successful live recovery from a failed attempt has not been demonstrated.
+3. Record and play back an actual walkthrough: generation provenance, review, assertions, seeded source repair, unchanged-revision retest, and an incorrect-test/environment example. Check Lark sign-in and screen sharing separately.
+4. Verify the final committed version from a fresh clone, including the generated replay command above. Inspect selected evidence, commit and push changes, record the final SHA (and optional tag), and confirm reviewer access. Final-code deadline from the handover: **2 November 2026, 23:59 Singapore time**; on-site demonstration: **3 November**, time/venue still to be confirmed.
