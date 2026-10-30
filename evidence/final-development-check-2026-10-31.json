@@ -1,0 +1,37 @@
+{
+  "date_singapore": "2026-10-31",
+  "validated_commit": "0486366d912fe6b4f77eaf852aa326278d312883",
+  "environment": "Windows, Python 3.12.10",
+  "scope": "Fresh local Git clone of committed files; no existing data directory or API key needed",
+  "checks": [
+    {
+      "name": "unit-tests",
+      "exit_code": 0
+    },
+    {
+      "name": "generated-replay",
+      "exit_code": 0
+    },
+    {
+      "name": "http-workflow",
+      "exit_code": 0
+    }
+  ],
+  "implementation_tests_passed": 21,
+  "generated_defect_detections": 1,
+  "same_revision_retest": "passed",
+  "reference_regression_passed": 15,
+  "http_workflow": {
+    "offline_proposals": 4,
+    "offline_schema_valid": 4,
+    "approved_unchanged": 4,
+    "constructed_incorrect": 1,
+    "constructed_rejected": 1,
+    "constructed_corrected_revisions": 1,
+    "environment_errors": 1,
+    "successful_recoveries": 1,
+    "live_provider_calls": 0
+  },
+  "recording_status": "not recorded",
+  "publication_status": "local commits; not pushed"
+}
