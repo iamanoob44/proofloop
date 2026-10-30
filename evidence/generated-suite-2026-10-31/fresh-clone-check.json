@@ -1,0 +1,21 @@
+{
+  "date_singapore": "2026-10-31",
+  "validated_code_commit": "710e7f75b7ab36c583a262bfd6ad11500008850a",
+  "environment": "Windows Python 3.12.10",
+  "fresh_clone": true,
+  "tests_passed": 23,
+  "demo_restored_from_committed_files": true,
+  "generated_seeded_outcomes": [
+    "passed",
+    "failed_assertion",
+    "passed"
+  ],
+  "generated_repaired_passed": 3,
+  "reference_passed": 15,
+  "new_provider_calls": 0,
+  "manual_remaining": [
+    "Owner presentation rehearsal and real screen recording/playback",
+    "Lark sign-in/screen sharing",
+    "Confirm assessor access and delivery instructions"
+  ]
+}
