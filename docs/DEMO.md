@@ -4,7 +4,7 @@ This is a proposed 7–10 minute demonstration, not a prescribed duration. It is
 
 ## Current preparation status — 31 October 2026
 
-Live generation is now evidenced in [the saved original history](../evidence/live-replay-2026-10-31/input-history.json): three proposals, one owner-approved boundary revision and one passing original execution. The generated boundary revision subsequently detected the disclosed defect and passed unchanged after source repair. The two other generated cases still require owner review. The owner accepted R1–R6 on 31 October; the historical SPEC.md heading is retained to avoid altering the saved model-input snapshot.
+Live generation is now evidenced in [the saved original history](../evidence/live-replay-2026-10-31/input-history.json): three proposals, one owner-approved boundary revision and one passing original execution. The generated boundary revision subsequently detected the disclosed defect and passed unchanged after source repair. All three cases subsequently received requirement-grounded delegated-assistant reviews and passed. See the [complete suite](../evidence/generated-suite-2026-10-31/result.json). These reviews do not claim independent human sign-off. The owner accepted R1–R6 on 31 October; the historical SPEC.md heading is retained to avoid altering the saved model-input snapshot.
 
 For step 4 below, demonstrate the actual generated case with:
 
@@ -15,6 +15,16 @@ python scripts/replay_generated.py --history evidence/live-replay-2026-10-31/inp
 This performs new local HTTP executions of a saved live-generated proposal. It makes no new provider call. Its `input-history.json` contains the original generation and review, while `before.json`, `after.json`, `regression.json` and `history.json` preserve replay evidence. Use the printed `data/live-replay-.../demo.sqlite` with `python -m proofloop serve --db PATH` to inspect the result. The original `reproduce_defect.py` sequence remains useful, but is reference-case evidence and must be labelled that way.
 
 Assistant browser checks now cover prepared-source labelling, pending/rejected execution gates, missing review fields, malformed JSON and draft retention, approval/execution, edit-to-pending, linked retest comparison, separate diagnosis, JSON download, missing-credential failure and a linked manual retry, persistence, and 800/1366-pixel layout checks. See [verification details](../evidence/browser-verification-2026-10-31/verification.json) for the scope and remaining checks. This does not substitute for the owner's recorded rehearsal or a successful live recovery after failure.
+
+## Ready-to-use saved demonstration
+
+The prepared local database is `data/presentation-demo-20261031.sqlite`, served on port 8768. A fresh clone can reproduce it with `python scripts/prepare_demo.py --db data/presentation.sqlite`, then `python -m proofloop serve --db data/presentation.sqlite --port 8768`.
+
+Show the saved generation, its three proposals and review identities. Explain the six-PIN arithmetic and duplicate rejection. In the execution table select **9ab5aa9e** to show the generated boundary case's failed original attempt and passing retest. Expand the original **a0ab2332** to inspect its separate product-defect diagnosis. These are saved real executions, not a new API generation. Use the complete-suite replay command in README.md with `--pause` when demonstrating a new source repair live.
+
+Suggested explanation: “The model proposes structured test data from the business specification. Review and execution are separate. This boundary case expects free shipping at exactly 5000 cents. The disclosed seeded implementation used a strict greater-than comparison, so it charged 500 cents. We changed only that source operator and reran the identical revision. The normal and duplicate-input tests passed before and after; only the boundary test detected this particular seed. The later reviews were delegated to the assistant and labelled accordingly.”
+
+The owner must record their own actual walkthrough and check playback. Screen recording and Lark account control are not available through the connected automation tools in this session. The current saved evidence is not a substitute for a recording.
 
 ## Seeded defect disclosure and model input
 
@@ -60,7 +70,7 @@ Moving the disclosure changes the specification hash without changing the v1 bus
 | What did you personally decide? | The owner supplied direction and constraints, accepted R1–R6, ran Windows checks and guided reproduction, and reviewed/executed one generated boundary case. Explain only work actually done; assistant implementation and replay work remain disclosed. |
 | Why this stack? | Standard-library Python plus SQLite avoids install complexity. One process is easy to inspect; it provides less deployment realism and isolation. |
 | What changes at scale? | Isolate workers and targets, add authentication, transactional job states, cancellation, explicit fixture lifecycle, stronger schema tooling and tamper-resistant evidence retention after validating the need. |
-| What is verified? | Real HTTP assertions, reference and generated-case source repair/retest, review gates, history, selected browser checks, a saved live generation and owner rule acceptance. Full owner rehearsal/recording, review of two other live cases and productivity remain outstanding. |
+| What is verified? | Real HTTP assertions, reference and generated-case source repair/retest, review gates, history, selected browser checks, a saved live generation and owner rule acceptance. Full owner rehearsal/recording, independent human review of delegated cases and productivity measurement remain outstanding. |
 
 ## Explain-back prompts for the owner
 

@@ -4,7 +4,7 @@
 
 ProofLoop helps engineers maintaining a fictional creator-commerce checkout quote service explore the gap between writing requirements and trusting generated regression tests. Scope: one local target, one immutable catalog, structured JSON proposals, revision-based review, one model provider adapter, SQLite history, and inspectable reports. No payments, authentication, tenancy, production commerce integrations or browser agents.
 
-**Status (31 October 2026, Singapore):** 21 implementation tests pass on Windows. Saved live generation contains three proposals; Jake approved and executed the shipping-boundary case. That same generated revision detects the seeded defect and passes unchanged after repair; reference regression passes 15/15. Browser workflow checks have been performed with explicitly labelled assistant reviews. The owner accepted R1–R6 on 31 October. Review of the other two live proposals, full presentation rehearsal, recording and final publication remain outstanding.
+**Status (31 October 2026, Singapore):** 23 implementation tests pass on Windows. All three saved live-generated proposals now have explicit delegated-assistant reviews and passing executions; Jake's earlier boundary review remains preserved. Against the disclosed seed, the normal and invalid cases pass and the boundary case fails; after repair, all three pass unchanged. Reference regression passes 15/15. The owner accepted R1–R6. Browser checks, a restorable demo database and fresh-clone verification are available. Owner rehearsal, an actual recording and presentation-account checks remain outstanding. Delegated assistant reviews are not independent human sign-off.
 
 ## Start locally
 
@@ -91,6 +91,8 @@ python -m proofloop export --db data/proofloop.sqlite --output data/export.json
 | [Windows reproduction](evidence/windows-reproduction-2026-10-29/result.json) | Owner's earlier reference-case reproduction and unchanged-revision retest |
 | [Live-generated replay](evidence/live-replay-2026-10-31/result.json) | Actual generated boundary revision fails against the seed and passes unchanged after repair; 15/15 reference regression |
 | [Browser verification](evidence/browser-verification-2026-10-31/verification.json) | Assistant-operated browser checks and explicitly listed remaining checks |
+| [Complete generated suite](evidence/generated-suite-2026-10-31/result.json) | Three delegated-reviewed generated cases; seeded 2 pass / 1 fail, repaired 3/3 pass, reference regression 15/15 |
+| [Delegated review scope](evidence/generated-suite-2026-10-31/review-scope.json) | Explicit assistant identity, owner delegation and preserved earlier reviews |
 | [Fresh-clone development check](evidence/final-development-check-2026-10-31.json) | Committed version `0486366` passes 21 tests, generated replay, 15/15 regression and the HTTP failure/recovery workflow without a pre-existing database |
 | `docs/ENGINEERING.md` | Modules, two decisions, design iteration, failure semantics and limitations |
 | `docs/ASSISTANCE.md` | Actual assistance, corrections, reuse and contribution boundaries |
@@ -106,9 +108,26 @@ A distributed archive includes `proofloop-history.bundle` and `RELEASE.json`. To
 
 The original bundle and sibling `proofloop` folder are historical baseline artifacts. Continue from the current Git repository, not that older copy.
 
-## Remaining completion steps
+## Prepare the demonstration from a fresh clone
 
-1. In the original live database, personally review the normal six-PIN case (3006 subtotal, 300 discount, 500 shipping, 3206 total) and duplicate-SKU case (400 INVALID_REQUEST). Approve or correct them with meaningful reasons, then execute. Strengthen the boundary review reason beyond the original “Testing” note by appending a new review; preserve the old event.
-2. Rehearse the browser flow and failure recovery on the presentation laptop. The saved provider-success and missing-credential failures are separate sessions; successful live recovery from a failed attempt has not been demonstrated.
-3. Record and play back an actual walkthrough: generation provenance, review, assertions, seeded source repair, unchanged-revision retest, and an incorrect-test/environment example. Check Lark sign-in and screen sharing separately.
-4. A fresh local clone of `0486366` passed the development checks above; repeat after any further code changes. Inspect and push the reviewed local commits, record the final submitted SHA (and optional tag), and confirm reviewer access. Final-code deadline from the handover: **2 November 2026, 23:59 Singapore time**; on-site demonstration: **3 November**, time/venue still to be confirmed.
+```bash
+python scripts/prepare_demo.py --db data/presentation.sqlite
+python -m proofloop serve --db data/presentation.sqlite --port 8768
+```
+
+Open http://127.0.0.1:8768. The first command restores three saved live-generated tests, their original generation and reviews, ten real executions and the separate seeded-defect diagnosis. It refuses to overwrite an existing database. Use another filename for another rehearsal. This is labelled recorded evidence, not a new provider call. Complete unfiltered regression history remains in `evidence/generated-suite-2026-10-31/history.json`.
+
+To execute the complete generated suite against newly seeded and repaired source:
+
+```bash
+python scripts/replay_generated.py --history evidence/generated-suite-2026-10-31/input-history.json --revision 23a40809-1f77-437f-8805-5bb28b20492a --revision 1ebc9242-5540-48c3-88f1-7778be9ead69 --revision 3556ba61-2168-433f-a080-6356ff6a64eb --pause
+```
+
+## Remaining owner actions
+
+1. Rehearse the explanation in [DEMO.md](docs/DEMO.md), especially why the equality boundary fails, why the same revision is retested, and which work was delegated. No additional manual test clicking is required to complete the current verified suite. Independently review any expectations you intend to claim you personally checked.
+2. Record and play back the actual walkthrough. Keep saved provider responses, new local HTTP execution, prepared examples and injected failures clearly labelled. A screenshot or evidence export is not a demonstration recording.
+3. Complete Lark sign-in/screen sharing and confirm the assessors can access the repository. Confirm the demonstration time/venue and any recording-delivery instructions. No invitations or recruiter messages are sent automatically.
+4. After any further code changes, repeat the fresh-clone checks and record the submitted SHA. Final-code deadline from the handover: **2 November 2026, 23:59 Singapore time**; on-site demonstration: **3 November**.
+
+Known verification limit: saved provider success and missing-credential failures are separate sessions. Unit tests verify linked provider retry recovery, and actual HTTP tests verify environment recovery, but successful live provider recovery after a failed call has not been demonstrated.

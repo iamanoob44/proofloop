@@ -14,6 +14,14 @@ The model-input correction deliberately removes the exact defect hint while pres
 
 Remaining owner work includes reviewing the other generated cases, explaining the architecture and arithmetic in their own words, recording/rehearsing the demonstration, and verifying final submission and reviewer access. No recording, user interview or productivity study is claimed.
 
+## Delegated completion — 31 October 2026
+
+The owner then requested automatic completion except where manual intervention is necessary. The owner reported completing the six-PIN review instructions; however, the running application's persisted records still showed that revision pending and contained no corresponding new human review or run. This discrepancy is recorded rather than converted into an unsupported personal-contribution claim.
+
+Under that delegation, the assistant independently checked all three saved proposals against R1–R6, appended approvals as **Assistant delegated review**, and executed them through the running HTTP API. All three passed. Jake's original boundary approval and its “Testing” note remain unchanged; the new arithmetic reason is a separately attributed assistant event. No new proposals, expectations or provider responses were fabricated.
+
+The assistant replayed all three approved revisions in an isolated clone. Seeded source: two passed and the boundary case failed. Repaired source: three passed using unchanged revisions and hashes. Reference regression: 15/15. A separate diagnosis explains the seeded R5 operator mismatch. A restorable demo history retains all live-generated records while the full export separately retains reference regression records. The assistant added and tested a restore helper; 23 implementation tests now pass. This is delegated assistant review, not independent human adjudication of all three tests. No new provider call or recording was made.
+
 ## Original implementation-session record (historical)
 
 The project owner supplied the ProofLoop direction, scope, sequencing, and evidence requirements. The assistant proposed the Python standard-library stack and the concrete fictional checkout rules; owner acceptance was pending during that session. The assistant wrote and executed the initial implementation. Do not present this as unaided personal authorship.

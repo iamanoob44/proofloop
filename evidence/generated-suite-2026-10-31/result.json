@@ -1,0 +1,50 @@
+{
+  "label": "Saved live-generated revisions; actual isolated HTTP execution; no new provider call or approval",
+  "input_history_hash": "22a536e4db4ec338842416005b38bb73289420fd7def1f34073befd7d9fceafb",
+  "selected_revisions": [
+    "23a40809-1f77-437f-8805-5bb28b20492a",
+    "1ebc9242-5540-48c3-88f1-7778be9ead69",
+    "3556ba61-2168-433f-a080-6356ff6a64eb"
+  ],
+  "pairs": [
+    {
+      "revision_id": "23a40809-1f77-437f-8805-5bb28b20492a",
+      "test_hash": "e0804fdd290f25da7f9cb4888ebad916d9a9cbfef21701161a8ac34675c8269f",
+      "generation_id": "77caf502-5935-4173-9121-1e0952a1e0e9",
+      "before_run": "8f0efa07-f4cc-4a3a-be72-573f463d4a7a",
+      "before_outcome": "passed",
+      "after_run": "ab0d8346-3454-47c4-879d-b7617c17f1b4",
+      "after_outcome": "passed",
+      "detected_seeded_defect": false
+    },
+    {
+      "revision_id": "1ebc9242-5540-48c3-88f1-7778be9ead69",
+      "test_hash": "3d7e17fab8a8ea008817f32b830137775464e405179078475ad05d589876f447",
+      "generation_id": "77caf502-5935-4173-9121-1e0952a1e0e9",
+      "before_run": "a0ab2332-3228-4c4d-beb0-f00c5092f49f",
+      "before_outcome": "failed_assertion",
+      "after_run": "9ab5aa9e-1810-4774-be1e-4382934f62d8",
+      "after_outcome": "passed",
+      "detected_seeded_defect": true
+    },
+    {
+      "revision_id": "3556ba61-2168-433f-a080-6356ff6a64eb",
+      "test_hash": "42903dad62fdaccfa1dfaacbc2e593001abb8fb02806d1b4e1dc877913994b67",
+      "generation_id": "77caf502-5935-4173-9121-1e0952a1e0e9",
+      "before_run": "5e97f002-e4d6-421e-8506-c5422e9f9398",
+      "before_outcome": "passed",
+      "after_run": "368912f7-0df0-48b7-9f57-8c58ba64b64b",
+      "after_outcome": "passed",
+      "detected_seeded_defect": false
+    }
+  ],
+  "detected_count": 1,
+  "fixed_all_passed": true,
+  "reference_summary": {
+    "passed": 15,
+    "failed_assertion": 0,
+    "invalid_test": 0,
+    "execution_error": 0,
+    "not_run": 0
+  }
+}
